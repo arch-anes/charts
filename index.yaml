@@ -3,7 +3,17 @@ entries:
   generic:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-04-13T20:07:36.652442092Z"
+    created: "2025-04-13T20:33:13.373081551Z"
+    description: A generic Helm chart for Kubernetes
+    digest: d97cd5bdc65674fe9f7c8c93349293a9ab450dc9d4b5987d01928660a0e46875
+    name: generic
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/generic-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-04-13T20:33:13.37296275Z"
     description: A generic Helm chart for Kubernetes
     digest: 0e4ce8f90dce659cf6f12ecaa6d4a6b68754328527d7646958319135df3b1aa5
     name: generic
@@ -13,7 +23,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-04-13T20:07:36.652300697Z"
+    created: "2025-04-13T20:33:13.372830665Z"
     description: A generic Helm chart for Kubernetes
     digest: 90cefe45508a3edf31275601945b3e24ca306838d1e1b7873095559aecb85372
     name: generic
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://arch-anes.github.io/charts/generic-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-13T20:07:36.652051742Z"
+generated: "2025-04-13T20:33:13.372584127Z"
