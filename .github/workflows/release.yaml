@@ -1,0 +1,37 @@
+name: Release and Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Release and Publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Configure git
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4.3.0
+
+      - name: Update Helm repository
+        run: |
+          for chart in charts/*/; do
+            helm package "$chart" -d ./artifacts
+          done
+          git checkout gh-pages || git checkout --orphan gh-pages
+          mv ./artifacts/* ./
+          helm repo index . --merge index.yaml --url https://arch-anes.github.io/charts
+          git add .
+          git commit -m "Update Helm charts"
+          git push origin gh-pages
