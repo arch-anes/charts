@@ -1,4 +1,4 @@
-{{ range .Values.objects }}
+{{ range .Values.templatedObjects }}
 ---
 {{- tpl (toYaml .) $ }}
 {{ end }}
