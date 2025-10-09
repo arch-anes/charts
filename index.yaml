@@ -3,9 +3,9 @@ entries:
   generic:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-04-13T20:33:13.373081551Z"
+    created: "2025-10-09T21:14:40.213751305Z"
     description: A generic Helm chart for Kubernetes
-    digest: d97cd5bdc65674fe9f7c8c93349293a9ab450dc9d4b5987d01928660a0e46875
+    digest: 915e8e48b7b652f46c97978eb69c97363b99f02333fdba45f4e5076354da7710
     name: generic
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-04-13T20:33:13.37296275Z"
+    created: "2025-10-09T21:14:40.213568582Z"
     description: A generic Helm chart for Kubernetes
     digest: 0e4ce8f90dce659cf6f12ecaa6d4a6b68754328527d7646958319135df3b1aa5
     name: generic
@@ -23,7 +23,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-04-13T20:33:13.372830665Z"
+    created: "2025-10-09T21:14:40.213447395Z"
     description: A generic Helm chart for Kubernetes
     digest: 90cefe45508a3edf31275601945b3e24ca306838d1e1b7873095559aecb85372
     name: generic
@@ -31,4 +31,23 @@ entries:
     urls:
     - https://arch-anes.github.io/charts/generic-0.1.0.tgz
     version: 0.1.0
-generated: "2025-04-13T20:33:13.372584127Z"
+  rancher-pushprox:
+  - annotations:
+      catalog.cattle.io/hidden: "true"
+      catalog.cattle.io/os: linux
+      catalog.rancher.io/certified: rancher
+      catalog.rancher.io/namespace: cattle-monitoring-system
+      catalog.rancher.io/release-name: rancher-pushprox
+    apiVersion: v1
+    appVersion: v0.1.5-rancher2
+    created: "2025-10-09T21:14:40.214380754Z"
+    description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
+      clients.
+    digest: 7c3328fb233b770fb772e2b894057b4d64ae6280b49d6ee7d15c5cafe5f6c083
+    kubeVersion: '>=1.26.0-0'
+    name: rancher-pushprox
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/rancher-pushprox-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-10-09T21:14:40.213222764Z"
