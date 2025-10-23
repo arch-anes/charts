@@ -3,9 +3,9 @@ entries:
   generic:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-10-09T21:14:40.213751305Z"
+    created: "2025-10-23T05:22:08.073009142Z"
     description: A generic Helm chart for Kubernetes
-    digest: 915e8e48b7b652f46c97978eb69c97363b99f02333fdba45f4e5076354da7710
+    digest: 583448ad78b4c3df163950a0fdddcdfb9b3a27e9b952cedeeabb0bb62118bff4
     name: generic
     type: application
     urls:
@@ -13,7 +13,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-10-09T21:14:40.213568582Z"
+    created: "2025-10-23T05:22:08.072869491Z"
     description: A generic Helm chart for Kubernetes
     digest: 0e4ce8f90dce659cf6f12ecaa6d4a6b68754328527d7646958319135df3b1aa5
     name: generic
@@ -23,7 +23,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-10-09T21:14:40.213447395Z"
+    created: "2025-10-23T05:22:08.072714602Z"
     description: A generic Helm chart for Kubernetes
     digest: 90cefe45508a3edf31275601945b3e24ca306838d1e1b7873095559aecb85372
     name: generic
@@ -31,6 +31,17 @@ entries:
     urls:
     - https://arch-anes.github.io/charts/generic-0.1.0.tgz
     version: 0.1.0
+  idrac-exporter:
+  - apiVersion: v2
+    appVersion: 2.3.0
+    created: "2025-10-23T05:22:08.073357672Z"
+    description: Chart for iDRAC Exporter
+    digest: 6a5a59294052124d7079d9ddfd54a0d91095441d8dbbbeaa11b86035520abf5b
+    name: idrac-exporter
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/idrac-exporter-2.3.0.tgz
+    version: 2.3.0
   rancher-pushprox:
   - annotations:
       catalog.cattle.io/hidden: "true"
@@ -40,14 +51,14 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v1
     appVersion: v0.1.5-rancher2
-    created: "2025-10-09T21:14:40.214380754Z"
+    created: "2025-10-23T05:22:08.075055582Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
-    digest: 7c3328fb233b770fb772e2b894057b4d64ae6280b49d6ee7d15c5cafe5f6c083
+    digest: 32f79e4ca674ae67e52e94f0f013f3d8185cf3278288b114663ec0124a541b48
     kubeVersion: '>=1.26.0-0'
     name: rancher-pushprox
     type: application
     urls:
     - https://arch-anes.github.io/charts/rancher-pushprox-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-09T21:14:40.213222764Z"
+generated: "2025-10-23T05:22:08.072463895Z"
