@@ -3,7 +3,30 @@ entries:
   appflowy:
   - apiVersion: v2
     appVersion: 0.9.64
-    created: "2025-11-01T20:00:52.2941349Z"
+    created: "2025-11-01T20:16:22.923925767Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.x.x
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 23.x.x
+    - condition: minio.enabled
+      name: minio
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 17.x.x
+    description: A Helm chart for AppFlowy Cloud
+    digest: 87e258e31ef518a27fbc9dfe3c9a60eb6cb53c03e21e919b7ae44378d7e3cea1
+    name: appflowy
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/appflowy-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: 0.9.64
+    created: "2025-11-01T20:16:22.909558242Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -27,9 +50,9 @@ entries:
   generic:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-11-01T20:00:52.294542661Z"
+    created: "2025-11-01T20:16:22.924314113Z"
     description: A generic Helm chart for Kubernetes
-    digest: 71e7afe1736e03c4960de4caaaff8e5cb3b631b615b1dc6f22c9784c2cf60164
+    digest: aef8feb26b7d679ce41e360fd5e9ae6051ef952df66f55cf78bcd8980bf986cf
     name: generic
     type: application
     urls:
@@ -37,7 +60,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-11-01T20:00:52.294420585Z"
+    created: "2025-11-01T20:16:22.924195621Z"
     description: A generic Helm chart for Kubernetes
     digest: 0e4ce8f90dce659cf6f12ecaa6d4a6b68754328527d7646958319135df3b1aa5
     name: generic
@@ -47,7 +70,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-11-01T20:00:52.294277411Z"
+    created: "2025-11-01T20:16:22.92405574Z"
     description: A generic Helm chart for Kubernetes
     digest: 90cefe45508a3edf31275601945b3e24ca306838d1e1b7873095559aecb85372
     name: generic
@@ -58,7 +81,7 @@ entries:
   idrac-exporter:
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2025-11-01T20:00:52.295248659Z"
+    created: "2025-11-01T20:16:22.925003472Z"
     description: Chart for iDRAC Exporter
     digest: d76a21495088d009302f3b899ea1eab89bd294aab642a077811031c6f2ae44a8
     name: idrac-exporter
@@ -68,7 +91,7 @@ entries:
     version: 2.3.1
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2025-11-01T20:00:52.294874725Z"
+    created: "2025-11-01T20:16:22.924656202Z"
     description: Chart for iDRAC Exporter
     digest: 6a5a59294052124d7079d9ddfd54a0d91095441d8dbbbeaa11b86035520abf5b
     name: idrac-exporter
@@ -85,14 +108,14 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v1
     appVersion: v0.1.5-rancher2
-    created: "2025-11-01T20:00:52.295833743Z"
+    created: "2025-11-01T20:16:22.925566554Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
-    digest: f0fec53677b168e281f40fe737c24c165ccb771d86fa4a169323654aca5fa5ab
+    digest: 7e2ba941dd2d2dc0594a1e6fcf2cc15381f1a7bb0839025d602b65f9dd227dbc
     kubeVersion: '>=1.26.0-0'
     name: rancher-pushprox
     type: application
     urls:
     - https://arch-anes.github.io/charts/rancher-pushprox-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-01T20:00:52.27885726Z"
+generated: "2025-11-01T20:16:22.893315855Z"
