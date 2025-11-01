@@ -1,0 +1,214 @@
+replicaCount: 1
+
+image:
+  pullPolicy: IfNotPresent
+
+deploymentAnnotations: {}
+
+# Bitnami PostgreSQL chart configuration
+postgresql:
+  enabled: false
+  auth:
+    username: postgres
+    password: password
+    database: postgres
+  primary:
+    persistence:
+      size: 10Gi
+
+# Bitnami Redis chart configuration
+redis:
+  enabled: false
+  auth:
+    enabled: false
+  master:
+    persistence:
+      size: 8Gi
+
+# Bitnami MinIO chart configuration
+minio:
+  enabled: false
+  auth:
+    rootUser: minioadmin
+    rootPassword: minioadmin
+  defaultBuckets: "appflowy"
+  persistence:
+    size: 10Gi
+
+# SMTP configuration shared by gotrue and mailer
+smtp:
+  host:
+    value: ""
+    secret:
+      name: ""
+      key: "smtp-host"
+  port:
+    value: "465"
+    secret:
+      name: ""
+      key: "smtp-port"
+  username:
+    value: ""
+    secret:
+      name: ""
+      key: "smtp-username"
+  password:
+    value: ""
+    secret:
+      name: ""
+      key: "smtp-password"
+  fromEmail: ""
+  tlsKind: ""
+
+gotrue:
+  image:
+    repository: appflowyinc/gotrue
+    tag: 0.9.154
+  resources: {}
+  adminEmail:
+    value: ""
+    secret:
+      name: ""
+      key: "gotrue-admin-email"
+  adminPassword:
+    value: ""
+    secret:
+      name: ""
+      key: "gotrue-admin-password"
+  disableSignup: false
+  jwtSecret:
+    value: ""
+    secret:
+      name: ""
+      key: "jwt-secret"
+  jwtExp: "7200"
+  smtpAdminEmail: ""
+  smtpMaxFrequency: "1ns"
+  mailerAutoconfirm: false
+  external:
+    google:
+      enabled: false
+      clientId: ""
+      secret: ""
+      redirectUri: ""
+    github:
+      enabled: false
+      clientId: ""
+      secret: ""
+      redirectUri: ""
+    discord:
+      enabled: false
+      clientId: ""
+      secret: ""
+      redirectUri: ""
+  saml:
+    enabled: false
+    privateKey: ""
+
+appflowy:
+  # External database configuration (used when postgresql.enabled=false)
+  externalDatabase:
+    host: ""
+    port: "5432"
+    username:
+      value: ""
+      secret:
+        name: ""
+        key: "db-username"
+    password:
+      value: ""
+      secret:
+        name: ""
+        key: "db-password"
+    database: ""
+  
+  # External Redis configuration (used when redis.enabled=false)
+  externalRedis:
+    host: ""
+    port: "6379"
+    password:
+      value: ""
+      secret:
+        name: ""
+        key: "redis-password"
+  
+  cloud:
+    image:
+      repository: appflowyinc/appflowy_cloud
+      tag: 0.9.154
+    resources: {}
+    rustLog: info
+  
+  s3:
+    createBucket: ""
+    useMinio: "true"
+    minioUrl: "http://appflowy-minio:9000"
+    accessKey:
+      value: ""
+      secret:
+        name: ""
+        key: "s3-access-key"
+    secretKey:
+      value: ""
+      secret:
+        name: ""
+        key: "s3-secret-key"
+    bucket: appflowy
+    region: us-east-1
+
+  baseFqdn: ""
+
+ai:
+  enabled: true
+  image:
+    repository: appflowyinc/appflowy_ai
+    tag: 0.9.150
+  resources: {}
+  openaiApiKey:
+    value: ""
+    secret:
+      name: ""
+      key: "openai-api-key"
+  defaultModel: "gpt-4.1-mini"
+  defaultCompletionModel: "gpt-4.1-mini"
+  azure:
+    apiKey: ""
+    endpoint: ""
+    apiVersion: ""
+
+worker:
+  image:
+    repository: appflowyinc/appflowy_worker
+    tag: 0.9.154
+  resources: {}
+  rustLog: info
+  importTickInterval: "30"
+
+web:
+  image:
+    repository: appflowyinc/appflowy_web
+    tag: 0.9.134
+  resources: {}
+
+adminFrontend:
+  image:
+    repository: appflowyinc/admin_frontend
+    tag: 0.9.154
+  resources: {}
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: appflowy.local
+  tls: []
+  traefik:
+    stripPrefix:
+      enabled: false
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

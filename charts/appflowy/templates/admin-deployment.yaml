@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "appflowy.fullname" . }}-admin
+  {{- with .Values.deploymentAnnotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: appflowy-admin
+  template:
+    metadata:
+      labels:
+        app: appflowy-admin
+    spec:
+      containers:
+      - name: admin
+        image: {{ .Values.adminFrontend.image.repository }}:{{ .Values.adminFrontend.image.tag }}
+        env:
+        - name: APPFLOWY_GOTRUE_BASE_URL
+          value: "{{ include "appflowy.baseUrl" . }}/gotrue"
+        - name: ADMIN_FRONTEND_APPFLOWY_CLOUD_URL
+          value: "http://{{ include "appflowy.fullname" . }}-cloud:8000"
+        - name: APPFLOWY_BASE_URL
+          value: {{ include "appflowy.baseUrl" . | quote }}
+        {{- if and (not .Values.redis.enabled) (or .Values.appflowy.externalRedis.password.value .Values.appflowy.externalRedis.password.secret.name) }}
+        - name: REDIS_PASSWORD
+          {{- include "appflowy.redisPassword" . | nindent 10 }}
+        {{- end }}
+        - name: ADMIN_FRONTEND_REDIS_URL
+          value: {{ include "appflowy.redisUrl" . | quote }}
+        ports:
+        - containerPort: 3000
+        resources:
+          {{- toYaml .Values.adminFrontend.resources | nindent 10 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "appflowy.fullname" . }}-admin
+spec:
+  selector:
+    app: appflowy-admin
+  ports:
+  - port: 3000

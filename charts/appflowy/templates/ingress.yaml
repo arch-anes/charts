@@ -1,0 +1,75 @@
+{{- if .Values.ingress.enabled }}
+{{- if .Values.ingress.traefik.stripPrefix.enabled }}
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ include "appflowy.fullname" . }}-strip-prefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /gotrue
+---
+{{- end }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "appflowy.fullname" . }}
+  {{- if or .Values.ingress.traefik.stripPrefix.enabled .Values.ingress.annotations }}
+  annotations:
+    {{- if .Values.ingress.traefik.stripPrefix.enabled }}
+    traefik.ingress.kubernetes.io/router.middlewares: {{ .Release.Namespace }}-{{ include "appflowy.fullname" . }}-strip-prefix@kubernetescrd
+    {{- end }}
+    {{- with .Values.ingress.annotations }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  {{- end }}
+spec:
+  {{- if .Values.ingress.className }}
+  ingressClassName: {{ .Values.ingress.className }}
+  {{- end }}
+  {{- if .Values.ingress.tls }}
+  tls:
+    {{- toYaml .Values.ingress.tls | nindent 4 }}
+  {{- end }}
+  rules:
+  {{- range .Values.ingress.hosts }}
+  - host: {{ .host }}
+    http:
+      paths:
+      - path: /gotrue
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ include "appflowy.fullname" $ }}-gotrue
+            port:
+              number: 9999
+      - path: /ws
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ include "appflowy.fullname" $ }}-cloud
+            port:
+              number: 8000
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ include "appflowy.fullname" $ }}-cloud
+            port:
+              number: 8000
+      - path: /console
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ include "appflowy.fullname" $ }}-admin
+            port:
+              number: 3000
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ include "appflowy.fullname" $ }}-web
+            port:
+              number: 80
+  {{- end }}
+{{- end }}

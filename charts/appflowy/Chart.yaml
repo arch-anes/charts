@@ -1,0 +1,20 @@
+apiVersion: v2
+name: appflowy
+description: A Helm chart for AppFlowy Cloud
+type: application
+version: 0.1.0
+appVersion: "0.9.64"
+
+dependencies:
+  - name: postgresql
+    version: "16.x.x"
+    repository: oci://registry-1.docker.io/bitnamicharts
+    condition: postgresql.enabled
+  - name: redis
+    version: "23.x.x"
+    repository: oci://registry-1.docker.io/bitnamicharts
+    condition: redis.enabled
+  - name: minio
+    version: "17.x.x"
+    repository: oci://registry-1.docker.io/bitnamicharts
+    condition: minio.enabled

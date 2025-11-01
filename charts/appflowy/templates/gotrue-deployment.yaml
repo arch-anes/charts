@@ -1,0 +1,91 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "appflowy.fullname" . }}-gotrue
+  {{- with .Values.deploymentAnnotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: gotrue
+  template:
+    metadata:
+      labels:
+        app: gotrue
+    spec:
+      containers:
+      - name: gotrue
+        image: {{ .Values.gotrue.image.repository }}:{{ .Values.gotrue.image.tag }}
+        env:
+        - name: GOTRUE_ADMIN_EMAIL
+          {{- include "appflowy.gotrueAdminEmail" . | nindent 10 }}
+        - name: GOTRUE_ADMIN_PASSWORD
+          {{- include "appflowy.gotrueAdminPassword" . | nindent 10 }}
+        - name: GOTRUE_DISABLE_SIGNUP
+          value: {{ .Values.gotrue.disableSignup | quote }}
+        - name: GOTRUE_SITE_URL
+          value: "appflowy-flutter://"
+        - name: GOTRUE_URI_ALLOW_LIST
+          value: "**"
+        - name: GOTRUE_JWT_SECRET
+          {{- include "appflowy.jwtSecret" . | nindent 10 }}
+        - name: GOTRUE_JWT_EXP
+          value: {{ .Values.gotrue.jwtExp | quote }}
+        - name: GOTRUE_DB_DRIVER
+          value: "postgres"
+        - name: API_EXTERNAL_URL
+          value: "{{ include "appflowy.baseUrl" . }}/gotrue"
+        {{- if not .Values.postgresql.enabled }}
+        - name: DB_USERNAME
+          {{- include "appflowy.dbUsername" . | nindent 10 }}
+        - name: DB_PASSWORD
+          {{- include "appflowy.dbPassword" . | nindent 10 }}
+        {{- end }}
+        - name: DATABASE_URL
+          value: {{ include "appflowy.databaseUrl" . | quote }}
+        - name: PORT
+          value: "9999"
+        - name: GOTRUE_SMTP_HOST
+          {{- include "appflowy.smtpHost" . | nindent 10 }}
+        - name: GOTRUE_SMTP_PORT
+          {{- include "appflowy.smtpPort" . | nindent 10 }}
+        - name: GOTRUE_SMTP_USER
+          {{- include "appflowy.smtpUsername" . | nindent 10 }}
+        - name: GOTRUE_SMTP_PASS
+          {{- include "appflowy.smtpPassword" . | nindent 10 }}
+        - name: GOTRUE_SMTP_ADMIN_EMAIL
+          value: {{ .Values.gotrue.smtpAdminEmail | quote }}
+        - name: GOTRUE_SMTP_MAX_FREQUENCY
+          value: {{ .Values.gotrue.smtpMaxFrequency | quote }}
+        - name: GOTRUE_MAILER_URLPATHS_CONFIRMATION
+          value: "/gotrue/verify"
+        - name: GOTRUE_MAILER_AUTOCONFIRM
+          value: {{ .Values.gotrue.mailerAutoconfirm | quote }}
+        - name: GOTRUE_EXTERNAL_GOOGLE_ENABLED
+          value: {{ .Values.gotrue.external.google.enabled | quote }}
+        - name: GOTRUE_EXTERNAL_GITHUB_ENABLED
+          value: {{ .Values.gotrue.external.github.enabled | quote }}
+        - name: GOTRUE_EXTERNAL_DISCORD_ENABLED
+          value: {{ .Values.gotrue.external.discord.enabled | quote }}
+        ports:
+        - containerPort: 9999
+        resources:
+          {{- toYaml .Values.gotrue.resources | nindent 10 }}
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 9999
+          initialDelaySeconds: 30
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "appflowy.fullname" . }}-gotrue
+spec:
+  selector:
+    app: gotrue
+  ports:
+  - port: 9999
