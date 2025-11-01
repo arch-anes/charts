@@ -3,7 +3,30 @@ entries:
   appflowy:
   - apiVersion: v2
     appVersion: 0.9.64
-    created: "2025-11-01T20:45:10.808115535Z"
+    created: "2025-11-01T20:47:52.4322414Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.x.x
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 23.x.x
+    - condition: minio.enabled
+      name: minio
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 17.x.x
+    description: A Helm chart for AppFlowy Cloud
+    digest: 56abae92765b1d990c79e45e43daafbfa1f6605b94c9fed90ba6e2937c72c530
+    name: appflowy
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/appflowy-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 0.9.64
+    created: "2025-11-01T20:47:52.417711103Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -26,7 +49,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.9.64
-    created: "2025-11-01T20:45:10.79320331Z"
+    created: "2025-11-01T20:47:52.40276142Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -49,7 +72,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.9.64
-    created: "2025-11-01T20:45:10.776242552Z"
+    created: "2025-11-01T20:47:52.386377996Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -73,9 +96,9 @@ entries:
   generic:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-11-01T20:45:10.808513359Z"
+    created: "2025-11-01T20:47:52.432592827Z"
     description: A generic Helm chart for Kubernetes
-    digest: 52dfd5a9fcbaef65e59614a0a02e8cd0469f97a191a737703ca63eb3568532b2
+    digest: f8d4cb002238df5460849c52aa331965095382e4d4376dc7a1eeb8b8632bdea7
     name: generic
     type: application
     urls:
@@ -83,7 +106,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-11-01T20:45:10.808378567Z"
+    created: "2025-11-01T20:47:52.432480978Z"
     description: A generic Helm chart for Kubernetes
     digest: 0e4ce8f90dce659cf6f12ecaa6d4a6b68754328527d7646958319135df3b1aa5
     name: generic
@@ -93,7 +116,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-11-01T20:45:10.808252802Z"
+    created: "2025-11-01T20:47:52.43236416Z"
     description: A generic Helm chart for Kubernetes
     digest: 90cefe45508a3edf31275601945b3e24ca306838d1e1b7873095559aecb85372
     name: generic
@@ -104,7 +127,7 @@ entries:
   idrac-exporter:
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2025-11-01T20:45:10.809226173Z"
+    created: "2025-11-01T20:47:52.43332118Z"
     description: Chart for iDRAC Exporter
     digest: d76a21495088d009302f3b899ea1eab89bd294aab642a077811031c6f2ae44a8
     name: idrac-exporter
@@ -114,7 +137,7 @@ entries:
     version: 2.3.1
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2025-11-01T20:45:10.808875376Z"
+    created: "2025-11-01T20:47:52.432958341Z"
     description: Chart for iDRAC Exporter
     digest: 6a5a59294052124d7079d9ddfd54a0d91095441d8dbbbeaa11b86035520abf5b
     name: idrac-exporter
@@ -131,14 +154,14 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v1
     appVersion: v0.1.5-rancher2
-    created: "2025-11-01T20:45:10.809787974Z"
+    created: "2025-11-01T20:47:52.433932214Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
-    digest: 67fe087e49606c2d5acdea7d667071a98f93089c6b7e6982251907fcd3696604
+    digest: ff66323aa4105faf8975033f0b5ef7269802efe4a5e5b3c99599ce8007eb7dee
     kubeVersion: '>=1.26.0-0'
     name: rancher-pushprox
     type: application
     urls:
     - https://arch-anes.github.io/charts/rancher-pushprox-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-01T20:45:10.752716826Z"
+generated: "2025-11-01T20:47:52.366551299Z"
