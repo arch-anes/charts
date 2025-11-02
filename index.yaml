@@ -3,145 +3,7 @@ entries:
   appflowy:
   - apiVersion: v2
     appVersion: 0.9.64
-    created: "2025-11-02T06:06:48.523899158Z"
-    dependencies:
-    - condition: postgresql.enabled
-      name: postgresql
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 16.x.x
-    - condition: redis.enabled
-      name: redis
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 23.x.x
-    - condition: minio.enabled
-      name: minio
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 17.x.x
-    description: A Helm chart for AppFlowy Cloud
-    digest: 0ca202d3e59a38685c858617dbf4c21b4fa545b4c7aa142dafa86ab4b91cc1ba
-    name: appflowy
-    type: application
-    urls:
-    - https://arch-anes.github.io/charts/appflowy-0.1.6.tgz
-    version: 0.1.6
-  - apiVersion: v2
-    appVersion: 0.9.64
-    created: "2025-11-02T06:06:48.508828462Z"
-    dependencies:
-    - condition: postgresql.enabled
-      name: postgresql
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 16.x.x
-    - condition: redis.enabled
-      name: redis
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 23.x.x
-    - condition: minio.enabled
-      name: minio
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 17.x.x
-    description: A Helm chart for AppFlowy Cloud
-    digest: 57d8052a1d8f8a04c3e91e5ac47325b99f54de580b72cd04adde3bcb53ef01fe
-    name: appflowy
-    type: application
-    urls:
-    - https://arch-anes.github.io/charts/appflowy-0.1.5.tgz
-    version: 0.1.5
-  - apiVersion: v2
-    appVersion: 0.9.64
-    created: "2025-11-02T06:06:48.49351389Z"
-    dependencies:
-    - condition: postgresql.enabled
-      name: postgresql
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 16.x.x
-    - condition: redis.enabled
-      name: redis
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 23.x.x
-    - condition: minio.enabled
-      name: minio
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 17.x.x
-    description: A Helm chart for AppFlowy Cloud
-    digest: dd7711497ff40327ce71e2a24c97877ac14f9d025ffd2190ce0bee98c3d35d65
-    name: appflowy
-    type: application
-    urls:
-    - https://arch-anes.github.io/charts/appflowy-0.1.4.tgz
-    version: 0.1.4
-  - apiVersion: v2
-    appVersion: 0.9.64
-    created: "2025-11-02T06:06:48.478242892Z"
-    dependencies:
-    - condition: postgresql.enabled
-      name: postgresql
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 16.x.x
-    - condition: redis.enabled
-      name: redis
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 23.x.x
-    - condition: minio.enabled
-      name: minio
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 17.x.x
-    description: A Helm chart for AppFlowy Cloud
-    digest: dda2cf816a3dbadcba75d1696ac2537286b632b8134a533a4e85069c5ab374f9
-    name: appflowy
-    type: application
-    urls:
-    - https://arch-anes.github.io/charts/appflowy-0.1.3.tgz
-    version: 0.1.3
-  - apiVersion: v2
-    appVersion: 0.9.64
-    created: "2025-11-02T06:06:48.46285394Z"
-    dependencies:
-    - condition: postgresql.enabled
-      name: postgresql
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 16.x.x
-    - condition: redis.enabled
-      name: redis
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 23.x.x
-    - condition: minio.enabled
-      name: minio
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 17.x.x
-    description: A Helm chart for AppFlowy Cloud
-    digest: 2e39c92ae9dce4b1192e68d4f9109b18e31d60ec57aa9bfb91e63b53ece6c992
-    name: appflowy
-    type: application
-    urls:
-    - https://arch-anes.github.io/charts/appflowy-0.1.2.tgz
-    version: 0.1.2
-  - apiVersion: v2
-    appVersion: 0.9.64
-    created: "2025-11-02T06:06:48.436959161Z"
-    dependencies:
-    - condition: postgresql.enabled
-      name: postgresql
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 16.x.x
-    - condition: redis.enabled
-      name: redis
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 23.x.x
-    - condition: minio.enabled
-      name: minio
-      repository: oci://registry-1.docker.io/bitnamicharts
-      version: 17.x.x
-    description: A Helm chart for AppFlowy Cloud
-    digest: 87e258e31ef518a27fbc9dfe3c9a60eb6cb53c03e21e919b7ae44378d7e3cea1
-    name: appflowy
-    type: application
-    urls:
-    - https://arch-anes.github.io/charts/appflowy-0.1.1.tgz
-    version: 0.1.1
-  - apiVersion: v2
-    appVersion: 0.9.64
-    created: "2025-11-02T06:06:48.421092185Z"
+    created: "2025-11-02T01:09:06.917443617-05:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -165,7 +27,7 @@ entries:
   generic:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-11-02T06:06:48.524278077Z"
+    created: "2025-11-02T01:09:06.917772882-05:00"
     description: A generic Helm chart for Kubernetes
     digest: 629bc3a700b46e65d3248116d30919817fc8b5542fb98507f8d940b36d53e624
     name: generic
@@ -175,7 +37,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-11-02T06:06:48.524163423Z"
+    created: "2025-11-02T01:09:06.91766823-05:00"
     description: A generic Helm chart for Kubernetes
     digest: 0e4ce8f90dce659cf6f12ecaa6d4a6b68754328527d7646958319135df3b1aa5
     name: generic
@@ -185,7 +47,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-11-02T06:06:48.524027138Z"
+    created: "2025-11-02T01:09:06.917558089-05:00"
     description: A generic Helm chart for Kubernetes
     digest: 90cefe45508a3edf31275601945b3e24ca306838d1e1b7873095559aecb85372
     name: generic
@@ -196,7 +58,7 @@ entries:
   idrac-exporter:
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2025-11-02T06:06:48.524933705Z"
+    created: "2025-11-02T01:09:06.918457942-05:00"
     description: Chart for iDRAC Exporter
     digest: d76a21495088d009302f3b899ea1eab89bd294aab642a077811031c6f2ae44a8
     name: idrac-exporter
@@ -206,7 +68,7 @@ entries:
     version: 2.3.1
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2025-11-02T06:06:48.524595552Z"
+    created: "2025-11-02T01:09:06.918098226-05:00"
     description: Chart for iDRAC Exporter
     digest: 6a5a59294052124d7079d9ddfd54a0d91095441d8dbbbeaa11b86035520abf5b
     name: idrac-exporter
@@ -223,7 +85,7 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v1
     appVersion: v0.1.5-rancher2
-    created: "2025-11-02T06:06:48.525482663Z"
+    created: "2025-11-02T01:09:06.918992459-05:00"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
     digest: 4adf63d57c9d95470fae371e0ce707530bf6d65e43e06d40268fae307aed079f
@@ -233,4 +95,4 @@ entries:
     urls:
     - https://arch-anes.github.io/charts/rancher-pushprox-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-02T06:06:48.405305792Z"
+generated: "2025-11-02T01:09:06.903392192-05:00"
