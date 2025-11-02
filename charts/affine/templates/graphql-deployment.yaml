@@ -1,0 +1,102 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "affine.fullname" . }}-graphql
+  {{- with .Values.deploymentAnnotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: affine-graphql
+  template:
+    metadata:
+      labels:
+        app: affine-graphql
+    spec:
+      containers:
+      - name: graphql
+        image: "{{ .Values.graphql.image.repository }}:{{ .Values.graphql.image.tag | default .Chart.AppVersion }}"
+        env:
+        - name: AFFINE_PRIVATE_KEY
+          {{- include "affine.privateKey" . | nindent 10 }}
+        - name: NODE_ENV
+          value: {{ .Values.graphql.env | quote }}
+        - name: NODE_OPTIONS
+          value: "--max-old-space-size=2048"
+        - name: NO_COLOR
+          value: "1"
+        - name: DEPLOYMENT_TYPE
+          value: {{ .Values.affine.deployment.type | quote }}
+        - name: DEPLOYMENT_PLATFORM
+          value: {{ .Values.affine.deployment.platform | quote }}
+        - name: SERVER_FLAVOR
+          value: graphql
+        - name: AFFINE_ENV
+          value: {{ .Release.Namespace }}
+        {{- if not .Values.postgresql.enabled }}
+        - name: DB_USERNAME
+          {{- include "affine.dbUsername" . | nindent 10 }}
+        - name: DB_PASSWORD
+          {{- include "affine.dbPassword" . | nindent 10 }}
+        {{- end }}
+        - name: DATABASE_URL
+          value: {{ include "affine.databaseUrl" . | quote }}
+        - name: REDIS_SERVER_HOST
+          value: "{{ if .Values.redis.enabled }}{{ .Release.Name }}-redis-master{{ else }}{{ .Values.affine.externalRedis.host }}{{ end }}"
+        - name: REDIS_SERVER_PORT
+          value: "{{ if .Values.redis.enabled }}6379{{ else }}{{ .Values.affine.externalRedis.port }}{{ end }}"
+        - name: REDIS_SERVER_USER
+          value: {{ .Values.affine.externalRedis.username | quote }}
+        {{- if and (not .Values.redis.enabled) (or .Values.affine.externalRedis.password.value .Values.affine.externalRedis.password.secret.name) }}
+        - name: REDIS_SERVER_PASSWORD
+          {{- include "affine.redisPassword" . | nindent 10 }}
+        {{- end }}
+        - name: REDIS_SERVER_DATABASE
+          value: {{ .Values.affine.externalRedis.database | quote }}
+        - name: AFFINE_INDEXER_SEARCH_PROVIDER
+          value: {{ .Values.affine.indexer.provider | quote }}
+        - name: AFFINE_INDEXER_SEARCH_ENDPOINT
+          value: {{ .Values.affine.indexer.endpoint | quote }}
+        {{- if or .Values.affine.indexer.apiKey.value .Values.affine.indexer.apiKey.secret.name }}
+        - name: AFFINE_INDEXER_SEARCH_API_KEY
+          {{- include "affine.indexerApiKey" . | nindent 10 }}
+        {{- end }}
+        - name: AFFINE_SERVER_PORT
+          value: "3000"
+        - name: AFFINE_SERVER_EXTERNAL_URL
+          value: {{ include "affine.baseUrl" . | quote }}
+        - name: AFFINE_SERVER_HTTPS
+          value: "true"
+        - name: DOC_SERVICE_ENDPOINT
+          value: "http://{{ include "affine.fullname" . }}-doc:3020"
+        {{- if or .Values.smtp.host.value .Values.smtp.host.secret.name }}
+        - name: MAILER_HOST
+          {{- include "affine.smtpHost" . | nindent 10 }}
+        - name: MAILER_PORT
+          {{- include "affine.smtpPort" . | nindent 10 }}
+        - name: MAILER_USER
+          {{- include "affine.smtpUser" . | nindent 10 }}
+        - name: MAILER_PASSWORD
+          {{- include "affine.smtpPassword" . | nindent 10 }}
+        - name: MAILER_SENDER
+          {{- include "affine.smtpSender" . | nindent 10 }}
+        - name: MAILER_SECURE
+          value: {{ .Values.smtp.secure | quote }}
+        {{- end }}
+        ports:
+        - containerPort: 3000
+        resources:
+          {{- toYaml .Values.graphql.resources | nindent 10 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "affine.fullname" . }}-graphql
+spec:
+  selector:
+    app: affine-graphql
+  ports:
+  - port: 3000

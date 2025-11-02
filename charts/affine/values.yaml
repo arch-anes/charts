@@ -1,0 +1,153 @@
+replicaCount: 1
+
+image:
+  pullPolicy: IfNotPresent
+
+deploymentAnnotations: {}
+
+postgresql:
+  enabled: false
+  auth:
+    username: postgres
+    password: password
+    database: affine
+  primary:
+    persistence:
+      size: 10Gi
+
+redis:
+  enabled: false
+  auth:
+    enabled: false
+  master:
+    persistence:
+      size: 8Gi
+
+smtp:
+  host:
+    value: ""
+    secret:
+      name: ""
+      key: "smtp-host"
+  port:
+    value: "465"
+    secret:
+      name: ""
+      key: "smtp-port"
+  user:
+    value: ""
+    secret:
+      name: ""
+      key: "smtp-user"
+  password:
+    value: ""
+    secret:
+      name: ""
+      key: "smtp-password"
+  sender:
+    value: ""
+    secret:
+      name: ""
+      key: "smtp-sender"
+  secure: true
+
+affine:
+  buildType: stable
+  baseFqdn: ""
+  
+  externalDatabase:
+    host: ""
+    port: "5432"
+    username:
+      value: ""
+      secret:
+        name: ""
+        key: "db-username"
+    password:
+      value: ""
+      secret:
+        name: ""
+        key: "db-password"
+    database: ""
+  
+  externalRedis:
+    host: ""
+    port: "6379"
+    username: ""
+    password:
+      value: ""
+      secret:
+        name: ""
+        key: "redis-password"
+    database: 0
+  
+  secret:
+    privateKey:
+      value: ""
+      secret:
+        name: ""
+        key: "private-key"
+  
+  indexer:
+    provider: ""
+    endpoint: ""
+    apiKey:
+      value: ""
+      secret:
+        name: ""
+        key: "indexer-api-key"
+  
+  deployment:
+    type: affine
+    platform: gcp
+
+graphql:
+  image:
+    repository: ghcr.io/toeverything/affine
+    tag: ""
+  resources:
+    requests:
+      cpu: "2"
+      memory: 2Gi
+  env: production
+
+sync:
+  image:
+    repository: ghcr.io/toeverything/affine
+    tag: ""
+  resources: {}
+  env: production
+
+renderer:
+  image:
+    repository: ghcr.io/toeverything/affine
+    tag: ""
+  resources: {}
+  env: production
+
+doc:
+  image:
+    repository: ghcr.io/toeverything/affine
+    tag: ""
+  resources: {}
+  env: production
+
+web:
+  image:
+    repository: ghcr.io/toeverything/affine
+    tag: ""
+  resources: {}
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: affine.local
+  tls: []
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

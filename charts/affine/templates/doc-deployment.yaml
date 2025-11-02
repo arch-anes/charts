@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "affine.fullname" . }}-doc
+  {{- with .Values.deploymentAnnotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: affine-doc
+  template:
+    metadata:
+      labels:
+        app: affine-doc
+    spec:
+      containers:
+      - name: doc
+        image: "{{ .Values.doc.image.repository }}:{{ .Values.doc.image.tag | default .Chart.AppVersion }}"
+        env:
+        - name: AFFINE_PRIVATE_KEY
+          {{- include "affine.privateKey" . | nindent 10 }}
+        - name: NODE_ENV
+          value: {{ .Values.doc.env | quote }}
+        - name: NO_COLOR
+          value: "1"
+        - name: DEPLOYMENT_TYPE
+          value: {{ .Values.affine.deployment.type | quote }}
+        - name: DEPLOYMENT_PLATFORM
+          value: {{ .Values.affine.deployment.platform | quote }}
+        - name: SERVER_FLAVOR
+          value: doc
+        - name: AFFINE_ENV
+          value: {{ .Release.Namespace }}
+        {{- if not .Values.postgresql.enabled }}
+        - name: DB_USERNAME
+          {{- include "affine.dbUsername" . | nindent 10 }}
+        - name: DB_PASSWORD
+          {{- include "affine.dbPassword" . | nindent 10 }}
+        {{- end }}
+        - name: DATABASE_URL
+          value: {{ include "affine.databaseUrl" . | quote }}
+        - name: REDIS_SERVER_HOST
+          value: "{{ if .Values.redis.enabled }}{{ .Release.Name }}-redis-master{{ else }}{{ .Values.affine.externalRedis.host }}{{ end }}"
+        - name: REDIS_SERVER_PORT
+          value: "{{ if .Values.redis.enabled }}6379{{ else }}{{ .Values.affine.externalRedis.port }}{{ end }}"
+        - name: REDIS_SERVER_USER
+          value: {{ .Values.affine.externalRedis.username | quote }}
+        {{- if and (not .Values.redis.enabled) (or .Values.affine.externalRedis.password.value .Values.affine.externalRedis.password.secret.name) }}
+        - name: REDIS_SERVER_PASSWORD
+          {{- include "affine.redisPassword" . | nindent 10 }}
+        {{- end }}
+        - name: REDIS_SERVER_DATABASE
+          value: {{ .Values.affine.externalRedis.database | quote }}
+        - name: AFFINE_SERVER_PORT
+          value: "3020"
+        - name: AFFINE_SERVER_EXTERNAL_URL
+          value: {{ include "affine.baseUrl" . | quote }}
+        ports:
+        - containerPort: 3020
+        resources:
+          {{- toYaml .Values.doc.resources | nindent 10 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "affine.fullname" . }}-doc
+spec:
+  selector:
+    app: affine-doc
+  ports:
+  - port: 3020
