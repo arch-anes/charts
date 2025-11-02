@@ -3,7 +3,7 @@ entries:
   appflowy:
   - apiVersion: v2
     appVersion: 0.9.64
-    created: "2025-11-02T01:09:06.917443617-05:00"
+    created: "2025-11-02T01:17:26.957375052-05:00"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -27,7 +27,7 @@ entries:
   generic:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-11-02T01:09:06.917772882-05:00"
+    created: "2025-11-02T01:17:26.957679766-05:00"
     description: A generic Helm chart for Kubernetes
     digest: 629bc3a700b46e65d3248116d30919817fc8b5542fb98507f8d940b36d53e624
     name: generic
@@ -37,7 +37,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-11-02T01:09:06.91766823-05:00"
+    created: "2025-11-02T01:17:26.957581225-05:00"
     description: A generic Helm chart for Kubernetes
     digest: 0e4ce8f90dce659cf6f12ecaa6d4a6b68754328527d7646958319135df3b1aa5
     name: generic
@@ -47,7 +47,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-11-02T01:09:06.917558089-05:00"
+    created: "2025-11-02T01:17:26.957479904-05:00"
     description: A generic Helm chart for Kubernetes
     digest: 90cefe45508a3edf31275601945b3e24ca306838d1e1b7873095559aecb85372
     name: generic
@@ -55,27 +55,6 @@ entries:
     urls:
     - https://arch-anes.github.io/charts/generic-0.1.0.tgz
     version: 0.1.0
-  idrac-exporter:
-  - apiVersion: v2
-    appVersion: 2.3.0
-    created: "2025-11-02T01:09:06.918457942-05:00"
-    description: Chart for iDRAC Exporter
-    digest: d76a21495088d009302f3b899ea1eab89bd294aab642a077811031c6f2ae44a8
-    name: idrac-exporter
-    type: application
-    urls:
-    - https://arch-anes.github.io/charts/idrac-exporter-2.3.1.tgz
-    version: 2.3.1
-  - apiVersion: v2
-    appVersion: 2.3.0
-    created: "2025-11-02T01:09:06.918098226-05:00"
-    description: Chart for iDRAC Exporter
-    digest: 6a5a59294052124d7079d9ddfd54a0d91095441d8dbbbeaa11b86035520abf5b
-    name: idrac-exporter
-    type: application
-    urls:
-    - https://arch-anes.github.io/charts/idrac-exporter-2.3.0.tgz
-    version: 2.3.0
   rancher-pushprox:
   - annotations:
       catalog.cattle.io/hidden: "true"
@@ -85,7 +64,7 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v1
     appVersion: v0.1.5-rancher2
-    created: "2025-11-02T01:09:06.918992459-05:00"
+    created: "2025-11-02T01:17:26.958197052-05:00"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
     digest: 4adf63d57c9d95470fae371e0ce707530bf6d65e43e06d40268fae307aed079f
@@ -95,4 +74,4 @@ entries:
     urls:
     - https://arch-anes.github.io/charts/rancher-pushprox-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-02T01:09:06.903392192-05:00"
+generated: "2025-11-02T01:17:26.943018771-05:00"
