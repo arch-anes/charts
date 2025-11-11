@@ -1,0 +1,33 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "automerge": true,
+  "helm-values": {
+    "fileMatch": [
+      "charts/.+/values\\.ya?ml$"
+    ]
+  },
+  "helmv3": {
+    "fileMatch": [
+      "charts/.+/Chart\\.ya?ml$"
+    ]
+  },
+  "packageRules": [
+    {
+      "matchDatasources": [
+        "helm"
+      ],
+      "postUpgradeTasks": {
+        "commands": [
+          "yq eval -i '.version = (.version | split(\".\") | .[2] = ((.[2] | tonumber) + 1 | tostring) | join(\".\"))' {{{packageFileDir}}}/Chart.yaml"
+        ],
+        "fileFilters": [
+          "charts/**/Chart.yaml"
+        ],
+        "executionMode": "pr"
+      }
+    }
+  ]
+}
