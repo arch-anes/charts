@@ -1,0 +1,52 @@
+image:
+  repository: ghcr.io/muety/wakapi
+  tag: "2.16.1"
+  pullPolicy: IfNotPresent
+
+service:
+  main:
+    ports:
+      main:
+        port: 3000
+
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          probes:
+            readiness:
+              enabled: true
+              type: http
+              path: /api/health
+            liveness:
+              enabled: true
+              type: http
+              path: /api/health
+            startup:
+              enabled: true
+              type: http
+              path: /api/health
+          env:
+            # See https://github.com/muety/wakapi#-configuration-options
+            ENVIRONMENT: production
+            WAKAPI_PASSWORD_SALT: insecuresaltpleasechange
+            WAKAPI_EXPOSE_METRICS: "false"
+
+cnpg:
+  main:
+    enabled: false
+    database: wakapi
+    user: wakapi
+
+persistence:
+  data:
+    enabled: true
+    mountPath: //data
+
+metrics:
+  main:
+    enabled: false
+    endpoints:
+      - port: main
+        path: /api/metrics
