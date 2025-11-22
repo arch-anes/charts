@@ -9,13 +9,13 @@
     "enabled": true
   },
   "helm-values": {
-    "fileMatch": [
-      "charts/.+/values\\.ya?ml$"
+    "managerFilePatterns": [
+      "/charts/.+/values\\.ya?ml$/"
     ]
   },
   "helmv3": {
-    "fileMatch": [
-      "charts/.+/Chart\\.ya?ml$"
+    "managerFilePatterns": [
+      "/charts/.+/Chart\\.ya?ml$/"
     ]
   }
 }
