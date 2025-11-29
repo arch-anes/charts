@@ -63,7 +63,7 @@ smtp:
 gotrue:
   image:
     repository: appflowyinc/gotrue
-    tag: 0.9.154
+    tag: 0.9.165
   resources: {}
   adminEmail:
     value: ""
