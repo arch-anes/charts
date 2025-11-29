@@ -162,7 +162,7 @@ ai:
   enabled: true
   image:
     repository: appflowyinc/appflowy_ai
-    tag: 0.9.150
+    tag: 0.9.165
   resources: {}
   openaiApiKey:
     value: ""
