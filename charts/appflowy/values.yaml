@@ -179,7 +179,7 @@ ai:
 worker:
   image:
     repository: appflowyinc/appflowy_worker
-    tag: 0.9.154
+    tag: 0.9.165
   resources: {}
   rustLog: info
   importTickInterval: "30"
