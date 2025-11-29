@@ -193,7 +193,7 @@ web:
 adminFrontend:
   image:
     repository: appflowyinc/admin_frontend
-    tag: 0.9.154
+    tag: 0.9.165
   resources: {}
 
 ingress:
