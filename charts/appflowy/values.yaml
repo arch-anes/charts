@@ -135,7 +135,7 @@ appflowy:
   cloud:
     image:
       repository: appflowyinc/appflowy_cloud
-      tag: 0.9.154
+      tag: 0.9.165
     resources: {}
     rustLog: info
   
