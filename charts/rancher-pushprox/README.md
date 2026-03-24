@@ -1,6 +1,6 @@
 # rancher-pushprox
 
-This chart has been copied from https://github.com/rancher/charts/tree/dev-v2.12/charts/rancher-monitoring/107.2.0%2Bup69.8.2-rancher.20/charts/k3sServer.
+This chart has been copied from https://github.com/rancher/charts/tree/dev-v2.13/charts/rancher-monitoring/108.0.4%2Bup77.9.1-rancher.14/charts/k3sServer.
 
 ## Configuration
 
