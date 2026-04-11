@@ -1,0 +1,15 @@
+apiVersion: v2
+name: llama-cpp
+description: A Helm chart for llama.cpp server based on trueforge common library
+type: application
+version: 1.0.3
+appVersion: b8757
+dependencies:
+  - name: common
+    version: 29.x.x
+    repository: oci://oci.trueforge.org/truecharts
+    condition: ""
+    alias: ""
+    tags: []
+    import-values: []
+

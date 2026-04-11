@@ -1,0 +1,77 @@
+# Image definitions
+image:
+  repository: ghcr.io/ggml-org/llama.cpp
+  tag: "server-{{ .Chart.AppVersion }}"
+  pullPolicy: IfNotPresent
+
+cudaImage:
+  repository: ghcr.io/ggml-org/llama.cpp
+  tag: "server-cuda-{{ .Chart.AppVersion }}"
+  pullPolicy: IfNotPresent
+
+rocmImage:
+  repository: ghcr.io/ggml-org/llama.cpp
+  tag: "server-rocm-{{ .Chart.AppVersion }}"
+  pullPolicy: IfNotPresent
+
+vulkanImage:
+  repository: ghcr.io/ggml-org/llama.cpp
+  tag: "server-vulkan-{{ .Chart.AppVersion }}"
+  pullPolicy: IfNotPresent
+
+intelImage:
+  repository: ghcr.io/ggml-org/llama.cpp
+  tag: "server-intel-{{ .Chart.AppVersion }}"
+  pullPolicy: IfNotPresent
+
+service:
+  main:
+    ports:
+      main:
+        port: 8080
+
+gpu:
+  enabled: false
+  useVulkan: false
+  type: nvidia # Options: nvidia, amd, intel, intel_xe
+
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          imageSelector: |
+            {{- if not .Values.gpu.enabled -}}
+              image
+            {{- else if .Values.gpu.useVulkan -}}
+              vulkanImage
+            {{- else if eq .Values.gpu.type "nvidia" -}}
+              cudaImage
+            {{- else if eq .Values.gpu.type "amd" -}}
+              rocmImage
+            {{- else if or (eq .Values.gpu.type "intel") (eq .Values.gpu.type "intel_xe") -}}
+              intelImage
+            {{- else -}}
+              image
+            {{- end -}}
+          probes:
+            readiness:
+              enabled: true
+              type: http
+              path: /health
+            liveness:
+              enabled: true
+              type: http
+              path: /health
+            startup:
+              enabled: true
+              type: http
+              path: /health
+          env:
+            LLAMA_ARG_MODELS_DIR: /models
+            LLAMA_ARG_HOST: 0.0.0.0
+            LLAMA_ARG_PORT: 8080
+persistence:
+  models:
+    enabled: true
+    mountPath: /models
