@@ -1,0 +1,45 @@
+name: Bump Chart Version
+
+on:
+  pull_request:
+    branches: [main]
+    paths: ['charts/**/Chart.yaml']
+
+jobs:
+  bump-version:
+    name: Bump chart version
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+          token: ${{ secrets.BOT_PAT }}
+
+      - name: Bump chart versions if not already bumped
+        run: |
+          git fetch origin ${{ github.base_ref }}
+          changed=false
+          for chart_file in $(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep 'charts/.*/Chart.yaml'); do
+            old_version=$(git show origin/${{ github.base_ref }}:"$chart_file" | grep '^version:' | awk '{print $2}')
+            cur_version=$(grep '^version:' "$chart_file" | awk '{print $2}')
+            if [ "$old_version" = "$cur_version" ]; then
+              IFS='.' read -r major minor patch <<< "$cur_version"
+              bumped="$major.$minor.$((patch + 1))"
+              sed -i "s/^version: .*/version: $bumped/" "$chart_file"
+              echo "Bumped $chart_file: $cur_version -> $bumped"
+              changed=true
+            fi
+          done
+          echo "changed=$changed" >> $GITHUB_ENV
+
+      - name: Commit and push
+        if: env.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add charts/
+          git commit -m "chore: bump chart version"
+          git push
