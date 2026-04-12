@@ -3,7 +3,7 @@ entries:
   affine:
   - apiVersion: v2
     appVersion: 0.25.2
-    created: "2026-04-11T23:43:01.502403668Z"
+    created: "2026-04-12T00:17:13.789913074Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -14,7 +14,7 @@ entries:
       repository: oci://registry-1.docker.io/bitnamicharts
       version: 23.x.x
     description: AFFiNE cloud chart
-    digest: cf75bf9cb72d9574c49b01328e8a28b4fded396fd5b6a86090b371cb41634662
+    digest: 4fa6c2ac20162a0238335fe99cf75fa332476a1cb5b64b67dbe204d114366c1a
     name: affine
     type: application
     urls:
@@ -23,7 +23,7 @@ entries:
   appflowy:
   - apiVersion: v2
     appVersion: 0.9.64
-    created: "2026-04-11T23:43:01.518128688Z"
+    created: "2026-04-12T00:17:13.805758537Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -38,7 +38,7 @@ entries:
       repository: oci://registry-1.docker.io/bitnamicharts
       version: 17.x.x
     description: A Helm chart for AppFlowy Cloud
-    digest: ae152178d5bb5a7f2c28b685590762a358df265f65bc1eab044cec178d511bb1
+    digest: c5d6e16d5bb3776ef48b7cef1a7ce912487eaa06d4f53cbda7330349cdd65817
     name: appflowy
     type: application
     urls:
@@ -47,9 +47,9 @@ entries:
   generic:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-04-11T23:43:01.518479969Z"
+    created: "2026-04-12T00:17:13.8061403Z"
     description: A generic Helm chart for Kubernetes
-    digest: 59d0858c63763294579d40586714ad53a4c854b2acd9122ed288687be02b2d0d
+    digest: 60d954a00f7e19384890293de499948c7aa0195a58bc75bdfb6589246d4da89e
     name: generic
     type: application
     urls:
@@ -57,7 +57,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-04-11T23:43:01.518374004Z"
+    created: "2026-04-12T00:17:13.806023462Z"
     description: A generic Helm chart for Kubernetes
     digest: 0e4ce8f90dce659cf6f12ecaa6d4a6b68754328527d7646958319135df3b1aa5
     name: generic
@@ -67,7 +67,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-04-11T23:43:01.518259738Z"
+    created: "2026-04-12T00:17:13.805902606Z"
     description: A generic Helm chart for Kubernetes
     digest: 90cefe45508a3edf31275601945b3e24ca306838d1e1b7873095559aecb85372
     name: generic
@@ -78,7 +78,21 @@ entries:
   llama-cpp:
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-04-11T23:43:01.526316547Z"
+    created: "2026-04-12T00:17:13.818913865Z"
+    dependencies:
+    - name: common
+      repository: oci://oci.trueforge.org/truecharts
+      version: 29.x.x
+    description: A Helm chart for llama.cpp server based on trueforge common library
+    digest: d2f3eb6cd0f463e7277e4d38f17f384e26dc336756c17b01bc45ea4e59a34a4e
+    name: llama-cpp
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/llama-cpp-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: b8757
+    created: "2026-04-12T00:17:13.812372873Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -99,10 +113,10 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v2
     appVersion: v0.1.9
-    created: "2026-04-11T23:43:01.527553471Z"
+    created: "2026-04-12T00:17:13.820512539Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
-    digest: 514bef6337b85c90007f3fae9947567a062e8d9550a56a123775de008d355c71
+    digest: 89dd1e9882c165334026fb78a7e8cb33f01797713fa8a51788fdb042ebe9c848
     kubeVersion: '>=1.26.0-0'
     name: rancher-pushprox
     type: application
@@ -117,7 +131,7 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v1
     appVersion: v0.1.5-rancher2
-    created: "2026-04-11T23:43:01.526934102Z"
+    created: "2026-04-12T00:17:13.819520056Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
     digest: 3e6ec96cb53973d854c3b3218fd75b55a84d4ee51185f673ddd9a8c368902ddd
@@ -130,17 +144,17 @@ entries:
   wakapi:
   - apiVersion: v2
     appVersion: 2.16.1
-    created: "2026-04-11T23:43:01.534451813Z"
+    created: "2026-04-12T00:17:13.826794683Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
       version: 28.x.x
     description: A minimalist, self-hosted WakaTime-compatible backend for coding
       statistics
-    digest: ff3bf7a613ebf0cb4aa8013436a22484795235097d911547429bb7ebd45f68a4
+    digest: 58e1ec7c7fe825a426f1d81a9680d406e6f530dd0a3198aa37c17b104980ccc0
     name: wakapi
     type: application
     urls:
     - https://arch-anes.github.io/charts/wakapi-0.1.0.tgz
     version: 0.1.0
-generated: "2026-04-11T23:43:01.48994823Z"
+generated: "2026-04-12T00:17:13.777280145Z"
