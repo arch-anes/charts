@@ -11,15 +11,34 @@
     "enabled": true,
     "automerge": true
   },
+  "regexManagers": [
+    {
+      "fileMatch": [
+        "(^|/)Chart\\.yaml$"
+      ],
+      "matchStrings": [
+        "appVersion:\\s*\"?(?<currentValue>[^\"\\s]+)\"?\\s*#\\s*renovate:\\s*image=(?<depName>[^\\s]+)"
+      ],
+      "datasourceTemplate": "docker"
+    }
+  ],
   "packageRules": [
     {
-      "matchManagers": ["helmv3", "helm-values"],
-      "matchFileNames": ["charts/**"],
+      "matchManagers": [
+        "helmv3",
+        "helm-values",
+        "regex"
+      ],
+      "matchFileNames": [
+        "charts/**"
+      ],
       "groupName": "helm dependencies ({{{parentDir}}})",
       "groupSlug": "helm-{{{parentDir}}}"
     },
     {
-      "matchManagers": ["github-actions"],
+      "matchManagers": [
+        "github-actions"
+      ],
       "groupName": "github actions"
     }
   ]
