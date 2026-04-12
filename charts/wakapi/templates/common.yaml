@@ -1,1 +1,1 @@
-{{ include "tc.v1.common.loader.all" . }}
+{ { tpl (include "tc.v1.common.loader.all" .) . } }
