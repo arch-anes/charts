@@ -2,11 +2,11 @@ apiVersion: v2
 name: wakapi
 description: A minimalist, self-hosted WakaTime-compatible backend for coding statistics
 type: application
-version: 0.1.0
+version: 0.1.1
 appVersion: 2.16.1
 dependencies:
   - name: common
-    version: 28.x.x
+    version: 29.x.x
     repository: oci://oci.trueforge.org/truecharts
     condition: ""
     alias: ""
