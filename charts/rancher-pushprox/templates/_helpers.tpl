@@ -43,8 +43,10 @@
     {{- $override1 -}}
 {{- else if ne $override2 "" -}}
     {{- $override2 -}}
-{{- else -}}
+{{- else if ne $default "" -}}
     {{- $default -}}
+{{- else -}}
+    {{- .Chart.AppVersion -}}
 {{- end -}}
 {{- end -}}
 
@@ -93,8 +95,10 @@
     {{- $override1 -}}
 {{- else if ne $override2 "" -}}
     {{- $override2 -}}
-{{- else -}}
+{{- else if ne $default "" -}}
     {{- $default -}}
+{{- else -}}
+    {{- .Chart.AppVersion -}}
 {{- end -}}
 {{- end -}}
 
