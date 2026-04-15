@@ -3,7 +3,7 @@ entries:
   affine:
   - apiVersion: v2
     appVersion: 0.25.2
-    created: "2026-04-15T02:10:32.33661284Z"
+    created: "2026-04-15T02:13:39.199133941Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -23,7 +23,7 @@ entries:
   appflowy:
   - apiVersion: v2
     appVersion: 0.9.64
-    created: "2026-04-15T02:10:32.353149302Z"
+    created: "2026-04-15T02:13:39.214844629Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -47,9 +47,9 @@ entries:
   generic:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-04-15T02:10:32.353805632Z"
+    created: "2026-04-15T02:13:39.215230648Z"
     description: A generic Helm chart for Kubernetes
-    digest: 8c30ecbd5dcbdb90bb9ddb23466fcc38a07dae1c6d3a94e2def89bed01905e58
+    digest: e910e5b868632111b4b55dec459848f75bcc9eda1ee34af2ab42d890d2ed7b63
     name: generic
     type: application
     urls:
@@ -57,7 +57,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-04-15T02:10:32.353693897Z"
+    created: "2026-04-15T02:13:39.215117339Z"
     description: A generic Helm chart for Kubernetes
     digest: 0e4ce8f90dce659cf6f12ecaa6d4a6b68754328527d7646958319135df3b1aa5
     name: generic
@@ -67,7 +67,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-04-15T02:10:32.353534752Z"
+    created: "2026-04-15T02:13:39.214996535Z"
     description: A generic Helm chart for Kubernetes
     digest: 90cefe45508a3edf31275601945b3e24ca306838d1e1b7873095559aecb85372
     name: generic
@@ -78,13 +78,13 @@ entries:
   llama-cpp:
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-04-15T02:10:32.379735874Z"
+    created: "2026-04-15T02:13:39.241186027Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
       version: 29.x.x
     description: A Helm chart for llama.cpp server based on trueforge common library
-    digest: 9d794d62c2e9faac503a539d438f4fc993ad5f60d483021881ada376441582b4
+    digest: 3df57917250136b9fa4d4379af3e7ea7c7e47a21fd86109e0dbdadb901607a75
     name: llama-cpp
     type: application
     urls:
@@ -92,7 +92,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-04-15T02:10:32.37333258Z"
+    created: "2026-04-15T02:13:39.234589572Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -106,7 +106,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-04-15T02:10:32.36690085Z"
+    created: "2026-04-15T02:13:39.227840263Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -120,7 +120,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-04-15T02:10:32.359848427Z"
+    created: "2026-04-15T02:13:39.222067489Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -134,8 +134,30 @@ entries:
     version: 1.0.0
   mcp-context-forge:
   - apiVersion: v2
+    appVersion: v1.0.0-RC-3
+    created: "2026-04-15T02:13:39.280153165Z"
+    dependencies:
+    - name: common
+      repository: oci://oci.trueforge.org/truecharts
+      version: 29.x.x
+    description: IBM Model Context Protocol (MCP) Gateway & Registry
+    digest: cd4a2bab64b32c86c37fc8b617df3ad96787d84fb0e8927a16d0fd9b885f9269
+    home: https://github.com/IBM/mcp-context-forge
+    keywords:
+    - mcp
+    - gateway
+    - llm
+    - context-forge
+    name: mcp-context-forge
+    sources:
+    - https://github.com/IBM/mcp-context-forge
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/mcp-context-forge-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
     appVersion: 1.0.0-RC-3
-    created: "2026-04-15T02:10:32.4001983Z"
+    created: "2026-04-15T02:13:39.269473947Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -157,7 +179,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.0.0-RC-3
-    created: "2026-04-15T02:10:32.393464633Z"
+    created: "2026-04-15T02:13:39.260540941Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -179,7 +201,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.0.0-RC-3
-    created: "2026-04-15T02:10:32.386595421Z"
+    created: "2026-04-15T02:13:39.251429979Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -208,10 +230,10 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v2
     appVersion: v0.1.9
-    created: "2026-04-15T02:10:32.401473706Z"
+    created: "2026-04-15T02:13:39.28138414Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
-    digest: 37f8519d71959edbdc69fe3f82cca33e0f5b1934934ca5b93c82f0183b18ed54
+    digest: 8f43ffde57e3e5331afd287b36223a63e9d2f98f7fa7b2dfc10b15f8a1a71dc3
     kubeVersion: '>=1.26.0-0'
     name: rancher-pushprox
     type: application
@@ -226,7 +248,7 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v1
     appVersion: v0.1.5-rancher2
-    created: "2026-04-15T02:10:32.400839809Z"
+    created: "2026-04-15T02:13:39.280796453Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
     digest: 3e6ec96cb53973d854c3b3218fd75b55a84d4ee51185f673ddd9a8c368902ddd
@@ -239,14 +261,14 @@ entries:
   wakapi:
   - apiVersion: v2
     appVersion: 2.16.1
-    created: "2026-04-15T02:10:32.414350041Z"
+    created: "2026-04-15T02:13:39.294203948Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
       version: 29.x.x
     description: A minimalist, self-hosted WakaTime-compatible backend for coding
       statistics
-    digest: ae97d8a3b7120e5d3068970a8e376aa79433b59e6c654fe2af0438d97a46bf05
+    digest: 71f7a43887e3aeaf60517054a589a9a7d9d4289a2595c7111ce4c5ce46790075
     name: wakapi
     type: application
     urls:
@@ -254,7 +276,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 2.16.1
-    created: "2026-04-15T02:10:32.408331521Z"
+    created: "2026-04-15T02:13:39.287324803Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -267,4 +289,4 @@ entries:
     urls:
     - https://arch-anes.github.io/charts/wakapi-0.1.0.tgz
     version: 0.1.0
-generated: "2026-04-15T02:10:32.325149439Z"
+generated: "2026-04-15T02:13:39.187035016Z"
