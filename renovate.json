@@ -31,6 +31,13 @@
       "groupSlug": "chart-{{parentDir}}"
     },
     {
+      "matchPackageNames": [
+        "ghcr.io/ggml-org/llama.cpp"
+      ],
+      "versioning": "regex:^b(?<major>\\d+)$",
+      "extractVersion": "^server-(?<version>b\\d+)$"
+    },
+    {
       "matchManagers": [
         "github-actions"
       ],
