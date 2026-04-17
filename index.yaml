@@ -3,7 +3,7 @@ entries:
   affine:
   - apiVersion: v2
     appVersion: 0.25.2
-    created: "2026-04-17T02:14:28.180555831Z"
+    created: "2026-04-17T02:16:03.064716552Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -23,7 +23,7 @@ entries:
   appflowy:
   - apiVersion: v2
     appVersion: 0.9.64
-    created: "2026-04-17T02:14:28.197196206Z"
+    created: "2026-04-17T02:16:03.081771561Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -47,9 +47,9 @@ entries:
   generic:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-04-17T02:14:28.197826378Z"
+    created: "2026-04-17T02:16:03.082159868Z"
     description: A generic Helm chart for Kubernetes
-    digest: 5fb138154bff39759ed2873130cce343e62ea6bc9ae9e42d8b96486f0b4f1f4a
+    digest: 2afc264104282eff320631293fad3c5a3f1cd7a892b6d86f8c4c108745e697fd
     name: generic
     type: application
     urls:
@@ -57,7 +57,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-04-17T02:14:28.197712757Z"
+    created: "2026-04-17T02:16:03.082052018Z"
     description: A generic Helm chart for Kubernetes
     digest: 0e4ce8f90dce659cf6f12ecaa6d4a6b68754328527d7646958319135df3b1aa5
     name: generic
@@ -67,7 +67,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-04-17T02:14:28.197576082Z"
+    created: "2026-04-17T02:16:03.081914884Z"
     description: A generic Helm chart for Kubernetes
     digest: 90cefe45508a3edf31275601945b3e24ca306838d1e1b7873095559aecb85372
     name: generic
@@ -78,13 +78,13 @@ entries:
   llama-cpp:
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-04-17T02:14:28.225382714Z"
+    created: "2026-04-17T02:16:03.109270922Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
       version: 29.x.x
     description: A Helm chart for llama.cpp server based on trueforge common library
-    digest: db445a8647fb0db422d9d950ca8145c5e565342d9db97fd3228e5b59eed5cde2
+    digest: c8ad4dcc6a1b7e70bf1908d4515c43cdfece2bb9be3e2f6ab8f7a2ff6ea8198b
     name: llama-cpp
     type: application
     urls:
@@ -92,7 +92,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-04-17T02:14:28.218146372Z"
+    created: "2026-04-17T02:16:03.102545231Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -106,7 +106,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-04-17T02:14:28.211077917Z"
+    created: "2026-04-17T02:16:03.09570853Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -120,7 +120,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-04-17T02:14:28.204015276Z"
+    created: "2026-04-17T02:16:03.08942451Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -135,7 +135,7 @@ entries:
   mcp-context-forge:
   - apiVersion: v2
     appVersion: v1.0.0-RC-3
-    created: "2026-04-17T02:14:28.252599955Z"
+    created: "2026-04-17T02:16:03.136890989Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -157,7 +157,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.0.0-RC-3
-    created: "2026-04-17T02:14:28.245729042Z"
+    created: "2026-04-17T02:16:03.130038805Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -179,7 +179,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.0.0-RC-3
-    created: "2026-04-17T02:14:28.23871569Z"
+    created: "2026-04-17T02:16:03.122915652Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -201,7 +201,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.0.0-RC-3
-    created: "2026-04-17T02:14:28.231422357Z"
+    created: "2026-04-17T02:16:03.116103112Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -230,10 +230,10 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v2
     appVersion: v0.1.9
-    created: "2026-04-17T02:14:28.25383499Z"
+    created: "2026-04-17T02:16:03.138145544Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
-    digest: ef4dc29b1321304a5b219f5376f54f18d87d0b63fe4227a5906fb36411d6924b
+    digest: a83adb61c591cfafbbab3f2390198f5a1b793105cdfe28f5c3e74a86afc8062a
     kubeVersion: '>=1.26.0-0'
     name: rancher-pushprox
     type: application
@@ -248,7 +248,7 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v1
     appVersion: v0.1.5-rancher2
-    created: "2026-04-17T02:14:28.253213046Z"
+    created: "2026-04-17T02:16:03.137509889Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
     digest: 3e6ec96cb53973d854c3b3218fd75b55a84d4ee51185f673ddd9a8c368902ddd
@@ -261,14 +261,14 @@ entries:
   wakapi:
   - apiVersion: v2
     appVersion: 2.16.1
-    created: "2026-04-17T02:14:28.267527812Z"
+    created: "2026-04-17T02:16:03.151201778Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
       version: 29.x.x
     description: A minimalist, self-hosted WakaTime-compatible backend for coding
       statistics
-    digest: 109329bed284a1e6839938344827d0f06ffbeb87c8e6fe1c5d845ce1669d13ae
+    digest: ac781766cd053c9ff530dcc14f7982a996ffc99288460f1670f6b9db3afcb2e3
     name: wakapi
     type: application
     urls:
@@ -276,7 +276,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 2.16.1
-    created: "2026-04-17T02:14:28.260590574Z"
+    created: "2026-04-17T02:16:03.14517429Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -289,4 +289,4 @@ entries:
     urls:
     - https://arch-anes.github.io/charts/wakapi-0.1.0.tgz
     version: 0.1.0
-generated: "2026-04-17T02:14:28.168907897Z"
+generated: "2026-04-17T02:16:03.051756995Z"
