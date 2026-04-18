@@ -2,7 +2,7 @@ apiVersion: v2
 name: wakapi
 description: A minimalist, self-hosted WakaTime-compatible backend for coding statistics
 type: application
-version: 0.1.1
+version: 0.1.2
 appVersion: 2.17.3 # renovate: image=ghcr.io/muety/wakapi
 dependencies:
   - name: common
