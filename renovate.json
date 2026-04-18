@@ -27,7 +27,6 @@
       ],
       "automerge": true,
       "automergeType": "pr",
-      "platformAutomerge": true,
       "schedule": ["at any time"],
       "groupName": "{{parentDir}}",
       "groupSlug": "chart-{{parentDir}}"
