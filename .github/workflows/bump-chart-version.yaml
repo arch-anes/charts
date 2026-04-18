@@ -3,7 +3,6 @@ name: Bump Chart Version
 on:
   pull_request:
     branches: [main]
-    paths: ['charts/**/Chart.yaml']
 
 jobs:
   bump-version:
