@@ -7,6 +7,9 @@
     "* 0-3 * * 1"
   ],
   "automerge": true,
+  "gitIgnoredAuthors": [
+    "github-actions[bot]@users.noreply.github.com"
+  ],
   "customManagers": [
     {
       "customType": "regex",
