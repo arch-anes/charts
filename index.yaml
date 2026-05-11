@@ -3,7 +3,7 @@ entries:
   affine:
   - apiVersion: v2
     appVersion: 0.25.2
-    created: "2026-05-04T02:01:05.089627644Z"
+    created: "2026-05-11T01:43:03.701854724Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -23,7 +23,7 @@ entries:
   appflowy:
   - apiVersion: v2
     appVersion: 0.9.64
-    created: "2026-05-04T02:01:05.105504754Z"
+    created: "2026-05-11T01:43:03.718201435Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -47,9 +47,9 @@ entries:
   generic:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-05-04T02:01:05.105878849Z"
+    created: "2026-05-11T01:43:03.718573978Z"
     description: A generic Helm chart for Kubernetes
-    digest: 0048713a476da5de6c9646454a9a9adad7b6cde96c726b1be9393877ac3884d0
+    digest: 2307ba7aea54a0505e8b5d8705ace7b771a3b02eef2cb011fe28f4ec1b5d3cd4
     name: generic
     type: application
     urls:
@@ -57,7 +57,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-05-04T02:01:05.10575575Z"
+    created: "2026-05-11T01:43:03.718461638Z"
     description: A generic Helm chart for Kubernetes
     digest: 0e4ce8f90dce659cf6f12ecaa6d4a6b68754328527d7646958319135df3b1aa5
     name: generic
@@ -67,7 +67,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-05-04T02:01:05.105635587Z"
+    created: "2026-05-11T01:43:03.718333665Z"
     description: A generic Helm chart for Kubernetes
     digest: 90cefe45508a3edf31275601945b3e24ca306838d1e1b7873095559aecb85372
     name: generic
@@ -77,8 +77,22 @@ entries:
     version: 0.1.0
   llama-cpp:
   - apiVersion: v2
+    appVersion: b9093
+    created: "2026-05-11T01:43:03.78044906Z"
+    dependencies:
+    - name: common
+      repository: oci://oci.trueforge.org/truecharts
+      version: 29.x.x
+    description: A Helm chart for llama.cpp server based on trueforge common library
+    digest: ec007cf92f913a28ed86ff2b90b35b45ccc6541c84c9f79444cbc076ff3b50f2
+    name: llama-cpp
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/llama-cpp-1.0.8.tgz
+    version: 1.0.8
+  - apiVersion: v2
     appVersion: b9010
-    created: "2026-05-04T02:01:05.160315114Z"
+    created: "2026-05-11T01:43:03.773368801Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -92,7 +106,7 @@ entries:
     version: 1.0.7
   - apiVersion: v2
     appVersion: b8935
-    created: "2026-05-04T02:01:05.153461Z"
+    created: "2026-05-11T01:43:03.767100449Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -106,7 +120,7 @@ entries:
     version: 1.0.6
   - apiVersion: v2
     appVersion: b8851
-    created: "2026-05-04T02:01:05.146661724Z"
+    created: "2026-05-11T01:43:03.760407766Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -120,7 +134,7 @@ entries:
     version: 1.0.5
   - apiVersion: v2
     appVersion: b8808
-    created: "2026-05-04T02:01:05.139734463Z"
+    created: "2026-05-11T01:43:03.753042487Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -134,7 +148,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-05-04T02:01:05.132842857Z"
+    created: "2026-05-11T01:43:03.74623172Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -148,7 +162,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-05-04T02:01:05.126114306Z"
+    created: "2026-05-11T01:43:03.739725644Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -162,7 +176,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-05-04T02:01:05.11985212Z"
+    created: "2026-05-11T01:43:03.73289354Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -176,7 +190,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-05-04T02:01:05.112742119Z"
+    created: "2026-05-11T01:43:03.72575595Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -191,7 +205,7 @@ entries:
   mcp-context-forge:
   - apiVersion: v2
     appVersion: v1.0.0-RC-3
-    created: "2026-05-04T02:01:05.186127828Z"
+    created: "2026-05-11T01:43:03.807630447Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -213,7 +227,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.0.0-RC-3
-    created: "2026-05-04T02:01:05.179614294Z"
+    created: "2026-05-11T01:43:03.800843768Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -235,7 +249,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.0.0-RC-3
-    created: "2026-05-04T02:01:05.172981142Z"
+    created: "2026-05-11T01:43:03.794516381Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -257,7 +271,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.0.0-RC-3
-    created: "2026-05-04T02:01:05.167187525Z"
+    created: "2026-05-11T01:43:03.787563745Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -286,10 +300,10 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v2
     appVersion: v0.1.10
-    created: "2026-05-04T02:01:05.18806701Z"
+    created: "2026-05-11T01:43:03.808893506Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
-    digest: 9005bff06c257ab9c35a870f02464c33ca3e316a4d6237ca686e73c182bc4bd3
+    digest: 7eca542bd983984e9e4542ac8e7266527a3efab254b6cddbae1568a2bf623398
     kubeVersion: '>=1.26.0-0'
     name: rancher-pushprox
     type: application
@@ -304,7 +318,7 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v2
     appVersion: v0.1.9
-    created: "2026-05-04T02:01:05.188929552Z"
+    created: "2026-05-11T01:43:03.809525481Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
     digest: 472794f7149a58d8f8afe9fadcc518783b8b203deb4d3f5e11618b5f058592ee
@@ -322,7 +336,7 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v1
     appVersion: v0.1.5-rancher2
-    created: "2026-05-04T02:01:05.186824662Z"
+    created: "2026-05-11T01:43:03.80823416Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
     digest: 3e6ec96cb53973d854c3b3218fd75b55a84d4ee51185f673ddd9a8c368902ddd
@@ -335,14 +349,14 @@ entries:
   wakapi:
   - apiVersion: v2
     appVersion: 2.17.3
-    created: "2026-05-04T02:01:05.208487954Z"
+    created: "2026-05-11T01:43:03.82996789Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
       version: 29.x.x
     description: A minimalist, self-hosted WakaTime-compatible backend for coding
       statistics
-    digest: d4c46df982036954261bd3cffa7263a5cf5f86ada511c579c30c388dc35f63ae
+    digest: aefd66b78ff1db37de98944bd7566a629fe314b438bec9f420d71d478e0a568a
     name: wakapi
     type: application
     urls:
@@ -350,7 +364,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 2.16.1
-    created: "2026-05-04T02:01:05.201665064Z"
+    created: "2026-05-11T01:43:03.823926271Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -365,7 +379,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 2.16.1
-    created: "2026-05-04T02:01:05.195602158Z"
+    created: "2026-05-11T01:43:03.816381135Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -378,4 +392,4 @@ entries:
     urls:
     - https://arch-anes.github.io/charts/wakapi-0.1.0.tgz
     version: 0.1.0
-generated: "2026-05-04T02:01:05.077452657Z"
+generated: "2026-05-11T01:43:03.687704397Z"
