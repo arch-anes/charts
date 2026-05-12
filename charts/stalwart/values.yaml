@@ -1,0 +1,374 @@
+image:
+  repository: stalwartlabs/stalwart
+  tag: "v{{ .Chart.AppVersion }}"
+  pullPolicy: IfNotPresent
+
+imageCli:
+  repository: ghcr.io/arch-anes/stalwart-cli
+  tag: trixie-slim
+  pullPolicy: Always
+
+global:
+  labels: {}
+  annotations: {}
+
+service:
+  main:
+    ports:
+      main:
+        port: 8080
+      smtp:
+        enabled: true
+        port: 25
+        protocol: tcp
+      smtps:
+        enabled: true
+        port: 465
+        protocol: tcp
+      submission:
+        enabled: true
+        port: 587
+        protocol: tcp
+      imap:
+        enabled: true
+        port: 143
+        protocol: tcp
+      imaps:
+        enabled: true
+        port: 993
+        protocol: tcp
+      pop3:
+        enabled: false
+        port: 110
+        protocol: tcp
+      pop3s:
+        enabled: false
+        port: 995
+        protocol: tcp
+      sieve:
+        enabled: true
+        port: 4190
+        protocol: tcp
+      https:
+        enabled: false
+        port: 443
+        protocol: tcp
+
+workload:
+  main:
+    type: StatefulSet
+    podSpec:
+      containers:
+        main:
+          probes:
+            readiness:
+              enabled: true
+              type: http
+              path: /healthz/ready
+            liveness:
+              enabled: true
+              type: http
+              path: /healthz/live
+            startup:
+              enabled: true
+              type: http
+              path: /healthz/live
+          # See https://stalw.art/docs/configuration/environment-variables/
+          env: {}
+
+  # Configuration Job to apply the declarative plan
+  apply-config:
+    enabled: true
+    type: Job
+    annotations:
+      "helm.sh/hook": post-install,post-upgrade
+      "helm.sh/hook-weight": "5"
+      "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
+    podSpec:
+      restartPolicy: OnFailure
+      containers:
+        apply-config:
+          enabled: true
+          primary: true
+          imageSelector: imageCli
+          probes:
+            liveness:
+              enabled: false
+            readiness:
+              enabled: false
+            startup:
+              enabled: false
+          command:
+            - /bin/sh
+            - -c
+            - |
+              # Wait for the service to be reachable
+              STALWART_HOST="{{ include "tc.v1.common.lib.chart.names.fullname" . }}"
+              until wget -qO- http://$STALWART_HOST:8080/healthz/ready > /dev/null 2>&1; do
+                echo "Waiting for Stalwart API at http://$STALWART_HOST:8080..."
+                sleep 5
+              done
+
+              cp /etc/stalwart/applied-config.json /tmp/applied-config.json
+
+              echo "Applying configuration..."
+              stalwart-cli apply --url http://$STALWART_HOST:8080 --file /tmp/applied-config.json --user "$STALWART_USER" --password "$STALWART_PASSWORD"
+          env: {}
+
+persistence:
+  data:
+    enabled: true
+    mountPath: /var/lib/stalwart
+    targetSelector:
+      main:
+        main: {}
+  config:
+    enabled: true
+    type: configmap
+    objectName: config
+    mountPath: /etc/stalwart
+    readOnly: true
+    targetSelectAll: true
+
+configmap:
+  config:
+    enabled: true
+    data:
+      config.json: |
+        {{- .Values.stalwart.baseConfig | toPrettyJson | nindent 2 }}
+      applied-config.json: |
+        {{- range $item := .Values.stalwart.appliedConfig }}
+        {{- range $type, $payload := $item }}
+        {{- $idKey := index $.Values.stalwart.appliedConfigAttributeMap $type | default "" }}
+        {{- if eq $idKey "singleton" }}
+        {"@type":"update","object":"{{ $type }}","value":{{ $payload | toJson }}}
+        {{- else }}
+        {{- range $k, $v := $payload }}
+        {{- if and $idKey (hasKey $v $idKey) }}
+        {"@type":"destroy","object":"{{ $type }}","value":{{ dict $idKey (index $v $idKey) | toJson }}}
+        {{- else }}
+        {"@type":"destroy","object":"{{ $type }}"}
+        {{- end }}
+        {{- end }}
+        {"@type":"create","object":"{{ $type }}","value":{{ $payload | toJson }}}
+        {{- end }}
+        {{- end }}
+        {{- end }}
+
+# See https://stalw.art/docs/configuration/declarative-deployments/
+# This will be converted to JSON and applied via the sidecar
+stalwart:
+  baseConfig:
+    "@type": "PostgreSql"
+    host: postgres.db.svc.cluster.local
+    port: 5432
+    database: stalwart
+    authUsername: stalwart
+    authSecret:
+      "@type": "EnvironmentVariable"
+      variableName: POSTGRESQL_PASSWORD
+  appliedConfigAttributeMap:
+    Account: name
+    AccountPassword: singleton
+    AccountSettings: singleton
+    AcmeProvider: contact
+    Action: "@type"
+    AddressBook: singleton
+    AiModel: name
+    Alert: emailAlert
+    AllowedIp: address
+    ApiKey: description
+    Application: description
+    AppPassword: description
+    ArchivedItem: "@type"
+    ArfExternalReport: receivedAt
+    Asn: singleton
+    Authentication: singleton
+    BlobStore: singleton
+    BlockedIp: address
+    Bootstrap: singleton
+    Cache: singleton
+    Calendar: singleton
+    CalendarAlarm: singleton
+    CalendarScheduling: singleton
+    Certificate: certificate
+    ClusterNode: hostname
+    ClusterRole: name
+    Coordinator: singleton
+    DataRetention: singleton
+    DataStore: singleton
+    Directory: "@type"
+    DkimReportSettings: singleton
+    DkimSignature: domainId
+    DmarcExternalReport: receivedAt
+    DmarcInternalReport: deliverAt
+    DmarcReportSettings: singleton
+    DnsResolver: singleton
+    DnsServer: "@type"
+    Domain: name
+    DsnReportSettings: singleton
+    Email: singleton
+    Enterprise: singleton
+    EventTracingLevel: event
+    FileStorage: singleton
+    Http: singleton
+    HttpForm: singleton
+    HttpLookup: namespace
+    Imap: singleton
+    InMemoryStore: singleton
+    Jmap: singleton
+    Log: timestamp
+    MailingList: name
+    MaskedEmail: accountId
+    MemoryLookupKey: namespace
+    MemoryLookupKeyValue: namespace
+    Metric: timestamp
+    Metrics: singleton
+    MetricsStore: singleton
+    MtaConnectionStrategy: name
+    MtaDeliverySchedule: name
+    MtaExtensions: singleton
+    MtaHook: url
+    MtaInboundSession: singleton
+    MtaInboundThrottle: description
+    MtaMilter: hostname
+    MtaOutboundStrategy: singleton
+    MtaOutboundThrottle: description
+    MtaQueueQuota: description
+    MtaRoute: name
+    MtaStageAuth: singleton
+    MtaStageConnect: singleton
+    MtaStageData: singleton
+    MtaStageEhlo: singleton
+    MtaStageMail: singleton
+    MtaStageRcpt: singleton
+    MtaSts: singleton
+    MtaTlsStrategy: name
+    MtaVirtualQueue: name
+    NetworkListener: name
+    OAuthClient: clientId
+    OidcProvider: singleton
+    PublicKey: key
+    QueuedMessage: blobId
+    ReportSettings: singleton
+    Role: description
+    Search: singleton
+    SearchStore: singleton
+    Security: singleton
+    SenderAuth: singleton
+    Sharing: singleton
+    SieveSystemInterpreter: singleton
+    SieveSystemScript: name
+    SieveUserInterpreter: singleton
+    SieveUserScript: name
+    SpamClassifier: singleton
+    SpamDnsblServer: name
+    SpamDnsblSettings: singleton
+    SpamFileExtension: extension
+    SpamLlm: singleton
+    SpamPyzor: singleton
+    SpamRule: name
+    SpamSettings: singleton
+    SpamTag: tag
+    SpamTrainingSample: blobId
+    SpfReportSettings: singleton
+    StoreLookup: namespace
+    SystemSettings: singleton
+    Task: "@type"
+    TaskManager: singleton
+    Tenant: name
+    TlsExternalReport: receivedAt
+    TlsInternalReport: deliverAt
+    TlsReportSettings: singleton
+    Trace: timestamp
+    Tracer: "@type"
+    TracingStore: singleton
+    WebDav: singleton
+    WebHook: url
+  appliedConfig:
+    - DataStore:
+        singleton:
+          "@type": PostgreSql
+          host: postgresql-primary
+          database: stalwart
+          authUsername: stalwart
+          authSecret:
+            "@type": "EnvironmentVariable"
+            variableName: POSTGRESQL_PASSWORD
+    - NetworkListener:
+        smtp:
+          bind:
+            - "[::]:25"
+          protocol: smtp
+          useTls: false
+        smtps:
+          bind:
+            - "[::]:465"
+          protocol: smtp
+          tlsImplicit: true
+        submission:
+          bind:
+            - "[::]:587"
+          protocol: smtp
+        imaps:
+          bind:
+            - "[::]:993"
+          protocol: imap
+          tlsImplicit: true
+
+metrics:
+  main:
+    enabled: false
+    type: servicemonitor
+    targetSelector: main
+    endpoints:
+      - port: main
+        path: /metrics/prometheus
+
+ingressRouteTCP:
+  smtp:
+    enabled: true
+    match: HostSNI(`*`)
+    entryPoint: smtp
+    proxyProtocol:
+      version: 2
+  smtps:
+    enabled: true
+    match: HostSNI(`*`)
+    entryPoint: smtps
+    proxyProtocol:
+      version: 2
+    tls:
+      passthrough: true
+  submission:
+    enabled: true
+    match: HostSNI(`*`)
+    entryPoint: submission
+    proxyProtocol:
+      version: 2
+    tls:
+      passthrough: true
+  imaps:
+    enabled: true
+    match: HostSNI(`*`)
+    entryPoint: imaps
+    proxyProtocol:
+      version: 2
+    tls:
+      passthrough: true
+  pop3s:
+    enabled: true
+    match: HostSNI(`*`)
+    entryPoint: pop3s
+    proxyProtocol:
+      version: 2
+    tls:
+      passthrough: true
+  sieve:
+    enabled: true
+    match: HostSNI(`*`)
+    entryPoint: sieve
+    proxyProtocol:
+      version: 2
+    tls:
+      passthrough: true

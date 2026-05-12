@@ -1,0 +1,14 @@
+apiVersion: v2
+name: stalwart
+description: A secure, scalable, and comprehensive open-source mail server
+type: application
+version: 0.1.0
+appVersion: 0.16.5 # renovate: image=stalwartlabs/stalwart
+dependencies:
+  - name: common
+    version: 29.x.x
+    repository: oci://oci.trueforge.org/truecharts
+    condition: ""
+    alias: ""
+    tags: []
+    import-values: []

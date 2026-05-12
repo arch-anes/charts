@@ -1,0 +1,29 @@
+{{- if .Values.ingressRouteTCP -}}
+{{- range $name, $config := .Values.ingressRouteTCP -}}
+{{- if $config.enabled -}}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: {{ include "tc.v1.common.lib.chart.names.fullname" $ }}-{{ $name }}
+  labels:
+    {{- include "tc.v1.common.lib.metadata.allLabels" $ | nindent 4 }}
+spec:
+  entryPoints:
+    - {{ $config.entryPoint }}
+  routes:
+    - match: {{ $config.match }}
+      services:
+        - name: {{ include "tc.v1.common.lib.chart.names.fullname" $ }}
+          port: {{ $name }}
+          {{- if $config.proxyProtocol }}
+          proxyProtocol:
+            {{- toYaml $config.proxyProtocol | nindent 12 }}
+          {{- end }}
+  {{- if $config.tls }}
+  tls:
+    {{- toYaml $config.tls | nindent 4 }}
+  {{- end }}
+{{ end }}
+{{ end }}
+{{ end }}
