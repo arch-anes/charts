@@ -1,0 +1,54 @@
+# Image definitions
+image:
+  repository: ghcr.io/arch-anes/zfs-exporter
+  tag: "{{ .Chart.AppVersion }}"
+  pullPolicy: IfNotPresent
+
+service:
+  main:
+    ports:
+      main:
+        port: 9134
+
+workload:
+  main:
+    type: DaemonSet
+    podSpec:
+      containers:
+        main:
+          probes:
+            liveness:
+              enabled: true
+              type: http
+              path: /
+            readiness:
+              enabled: true
+              type: http
+              path: /
+            startup:
+              enabled: true
+              type: http
+              path: /
+
+securityContext:
+  container:
+    privileged: true
+    runAsNonRoot: false
+    runAsUser: 0
+    runAsGroup: 0
+
+persistence:
+  zfs:
+    enabled: true
+    type: hostPath
+    hostPath: /dev/zfs
+    mountPath: /dev/zfs
+    readOnly: true
+
+metrics:
+  main:
+    enabled: true
+    type: servicemonitor
+    endpoints:
+      - port: main
+        path: /metrics
