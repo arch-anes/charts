@@ -1,0 +1,14 @@
+apiVersion: v2
+name: opencode
+description: A web-based instance of OpenCode AI coding agent with Docker in Docker support
+type: application
+version: 1.0.0
+appVersion: 1.17.9 # renovate: image=ghcr.io/anomalyco/opencode
+dependencies:
+  - name: common
+    version: 29.x.x
+    repository: oci://oci.trueforge.org/truecharts
+    condition: ""
+    alias: ""
+    tags: []
+    import-values: []

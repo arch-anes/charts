@@ -1,0 +1,124 @@
+# Image definitions
+image:
+  repository: ghcr.io/arch-anes/opencode
+  tag: "{{ .Chart.AppVersion }}"
+  pullPolicy: IfNotPresent
+
+dindImage:
+  repository: docker
+  tag: 29.5.3-dind
+  pullPolicy: IfNotPresent
+
+service:
+  main:
+    ports:
+      main:
+        port: 4096
+        targetPort: 4096
+
+workload:
+  main:
+    podSpec:
+      containers:
+        main:
+          probes:
+            readiness:
+              enabled: true
+              type: tcp
+              port: 4096
+            liveness:
+              enabled: true
+              type: tcp
+              port: 4096
+            startup:
+              enabled: true
+              type: tcp
+              port: 4096
+          env:
+            DOCKER_HOST: tcp://localhost:2376
+            DOCKER_TLS_VERIFY: "1"
+            DOCKER_CERT_PATH: /certs/client
+            OPENCODE_SERVER_USERNAME: opencode
+            OPENCODE_SERVER_PASSWORD: ""
+          args:
+            - web
+            - --hostname
+            - 0.0.0.0
+            - --port
+            - "4096"
+        dind:
+          enabled: true
+          primary: false
+          imageSelector: dindImage
+          securityContext:
+            privileged: true
+            runAsNonRoot: false
+            runAsUser: 0
+            runAsGroup: 0
+          env:
+            DOCKER_TLS_CERTDIR: /certs
+          probes:
+            liveness:
+              enabled: true
+              initialDelaySeconds: 30
+              type: tcp
+              port: 2376
+            readiness:
+              enabled: true
+              initialDelaySeconds: 30
+              type: tcp
+              port: 2376
+            startup:
+              enabled: true
+              initialDelaySeconds: 30
+              type: tcp
+              port: 2376
+
+securityContext:
+  container:
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+    allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
+
+persistence:
+  share:
+    enabled: true
+    mountPath: /home/vscode/.local/share/opencode
+    targetSelector:
+      main:
+        main: {}
+  config:
+    enabled: true
+    mountPath: /home/vscode/.config/opencode
+    targetSelector:
+      main:
+        main: {}
+  cache:
+    enabled: true
+    mountPath: /home/vscode/.cache/opencode
+    targetSelector:
+      main:
+        main: {}
+  workspaces:
+    enabled: true
+    mountPath: /home/vscode/workspaces
+    targetSelector:
+      main:
+        main: {}
+  docker-certs-client:
+    enabled: true
+    type: emptyDir
+    targetSelector:
+      main:
+        main:
+          mountPath: /certs/client
+        dind:
+          mountPath: /certs/client
+  docker-data:
+    enabled: true
+    mountPath: /var/lib/docker
+    targetSelector:
+      main:
+        dind: {}
