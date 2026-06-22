@@ -6,7 +6,7 @@ image:
 
 dindImage:
   repository: docker
-  tag: 29.5.3-dind
+  tag: 29.6.0-dind
   pullPolicy: IfNotPresent
 
 service:
