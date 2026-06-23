@@ -24,16 +24,32 @@ intelImage:
   tag: "server-intel-{{ .Chart.AppVersion }}"
   pullPolicy: IfNotPresent
 
+gpu:
+  enabled: false
+  useVulkan: false
+  type: nvidia # Options: nvidia, amd, intel, intel_xe
+
+embeddings:
+  enabled: false
+  gpu:
+    enabled: false
+    useVulkan: false
+    type: nvidia # Options: nvidia, amd, intel, intel_xe
+
 service:
   main:
     ports:
       main:
         port: 8080
-
-gpu:
-  enabled: false
-  useVulkan: false
-  type: nvidia # Options: nvidia, amd, intel, intel_xe
+  embeddings:
+    enabled: "{{ .Values.embeddings.enabled }}"
+    type: ClusterIP
+    targetSelector: embeddings
+    ports:
+      http:
+        enabled: true
+        port: 8080
+        targetPort: 8080
 
 workload:
   main:
@@ -58,20 +74,71 @@ workload:
             readiness:
               enabled: true
               type: http
+              port: 8080
               path: /health
             liveness:
               enabled: true
               type: http
+              port: 8080
               path: /health
             startup:
               enabled: true
               type: http
+              port: 8080
               path: /health
           env:
             LLAMA_ARG_MODELS_DIR: /models
             LLAMA_ARG_HOST: 0.0.0.0
             LLAMA_ARG_PORT: 8080
+  embeddings:
+    enabled: "{{ .Values.embeddings.enabled }}"
+    primary: false
+    type: Deployment
+    podSpec:
+      containers:
+        embeddings:
+          enabled: true
+          primary: true
+          imageSelector: |
+            {{- if not .Values.embeddings.gpu.enabled -}}
+              image
+            {{- else if .Values.embeddings.gpu.useVulkan -}}
+              vulkanImage
+            {{- else if eq .Values.embeddings.gpu.type "nvidia" -}}
+              cudaImage
+            {{- else if eq .Values.embeddings.gpu.type "amd" -}}
+              rocmImage
+            {{- else if or (eq .Values.embeddings.gpu.type "intel") (eq .Values.embeddings.gpu.type "intel_xe") -}}
+              intelImage
+            {{- else -}}
+              image
+            {{- end -}}
+          probes:
+            readiness:
+              enabled: true
+              type: http
+              port: 8080
+              path: /health
+            liveness:
+              enabled: true
+              type: http
+              port: 8080
+              path: /health
+            startup:
+              enabled: true
+              type: http
+              port: 8080
+              path: /health
+          env:
+            LLAMA_ARG_MODELS_DIR: /models
+            LLAMA_ARG_HOST: 0.0.0.0
+            LLAMA_ARG_PORT: 8080
+            LLAMA_ARG_EMBEDDINGS: "1"
 persistence:
   models:
     enabled: true
     mountPath: /models
+  cache:
+    enabled: true
+    type: emptyDir
+    mountPath: /.cache
