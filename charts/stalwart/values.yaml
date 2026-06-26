@@ -5,8 +5,8 @@ image:
 
 imageCli:
   repository: ghcr.io/arch-anes/stalwart-cli
-  tag: trixie-slim
-  pullPolicy: Always
+  tag: 1.0.9
+  pullPolicy: IfNotPresent
 
 global:
   labels: {}
@@ -143,14 +143,7 @@ configmap:
         {{- if eq $idKey "singleton" }}
         {"@type":"update","object":"{{ $type }}","value":{{ $payload | toJson }}}
         {{- else }}
-        {{- range $k, $v := $payload }}
-        {{- if and $idKey (hasKey $v $idKey) }}
-        {"@type":"destroy","object":"{{ $type }}","value":{{ dict $idKey (index $v $idKey) | toJson }}}
-        {{- else }}
-        {"@type":"destroy","object":"{{ $type }}"}
-        {{- end }}
-        {{- end }}
-        {"@type":"create","object":"{{ $type }}","value":{{ $payload | toJson }}}
+        {"@type":"upsert","object":"{{ $type }}","value":{{ $payload | toJson }},"matchOn":["{{ $idKey }}"]}
         {{- end }}
         {{- end }}
         {{- end }}
