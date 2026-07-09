@@ -107,6 +107,7 @@ persistence:
     targetSelector:
       main:
         main: {}
+        dind: {}
   docker-certs-client:
     enabled: true
     type: emptyDir
