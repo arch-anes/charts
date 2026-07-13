@@ -114,6 +114,8 @@ workload:
               echo "Applying configuration..."
               stalwart-cli apply --url http://$STALWART_HOST:8080 --file /tmp/applied-config.json --user "$STALWART_USER" --password "$STALWART_PASSWORD"
           env: {}
+          securityContext:
+            readOnlyRootFilesystem: false
 
 persistence:
   data:
