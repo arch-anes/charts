@@ -1,0 +1,33 @@
+---
+clone:
+  - name: git
+    image: woodpeckerci/plugin-git
+    settings:
+      partial: false
+
+steps:
+  - name: Configure git
+    image: ghcr.io/arch-anes/dev-container-kubernetes:latest
+    environment:
+      BOT_PAT:
+        from_secret: github_push_token
+    commands:
+      - sudo chown -R "$(id -u):$(id -g)" .
+      - git config user.name "Woodpecker CI"
+      - git config user.email "woodpecker@users.noreply.woodpecker-ci.org"
+      - push_url=$(echo "${CI_REPO_CLONE_URL}" | sed "s#://#://$BOT_PAT@#")
+      - git remote set-url origin "$push_url"
+      - for chart in charts/*/; do helm dependency build "$chart"; done
+      - mkdir -p ./artifacts
+      - for chart in charts/*/; do helm package "$chart" -d ./artifacts; done
+      - git fetch origin gh-pages || true
+      - git checkout gh-pages || git checkout --orphan gh-pages
+      - mv ./artifacts/* ./
+      - helm repo index . --merge index.yaml --url https://arch-anes.github.io/charts
+      - git add .
+      - git commit -m "Update Helm charts"
+      - git push origin gh-pages
+
+when:
+  - event: push
+    branch: main
