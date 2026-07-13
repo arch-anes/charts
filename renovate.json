@@ -8,7 +8,7 @@
   ],
   "automerge": true,
   "gitIgnoredAuthors": [
-    "github-actions[bot]@users.noreply.github.com"
+    "woodpecker-bot@users.noreply.woodpecker-ci.org"
   ],
   "customManagers": [
     {
@@ -41,12 +41,6 @@
       ],
       "versioning": "regex:^b(?<major>\\d+)$",
       "extractVersion": "^server-(?<version>b\\d+)$"
-    },
-    {
-      "matchManagers": [
-        "github-actions"
-      ],
-      "groupName": "github actions"
     }
   ]
 }

@@ -1,0 +1,43 @@
+---
+clone:
+  - name: git
+    image: woodpeckerci/plugin-git
+    settings:
+      partial: false
+
+steps:
+  - name: Bump chart version
+    image: mcr.microsoft.com/devcontainers/base:ubuntu26.04
+    environment:
+      BOT_PAT:
+        from_secret: github_push_token
+    commands:
+      - |
+        git fetch origin "${CI_COMMIT_TARGET_BRANCH}"
+        changed=false
+        for chart_file in $(git diff --name-only "origin/${CI_COMMIT_TARGET_BRANCH}...HEAD" | grep 'charts/.*/Chart.yaml' || true); do
+          old_version=$(git show "origin/${CI_COMMIT_TARGET_BRANCH}:$chart_file" | grep '^version:' | awk '{print $2}')
+          cur_version=$(grep '^version:' "$chart_file" | awk '{print $2}')
+          if [ "$old_version" = "$cur_version" ]; then
+            major=$(echo "$cur_version" | cut -d. -f1)
+            minor=$(echo "$cur_version" | cut -d. -f2)
+            patch=$(echo "$cur_version" | cut -d. -f3)
+            bumped="$major.$minor.$((patch + 1))"
+            sed -i "s/^version: .*/version: $bumped/" "$chart_file"
+            echo "Bumped $chart_file: $cur_version -> $bumped"
+            changed=true
+          fi
+        done
+        if [ "$changed" = "true" ]; then
+          git config user.name "woodpecker-bot"
+          git config user.email "woodpecker-bot@users.noreply.woodpecker-ci.org"
+          push_url=$(echo "${CI_REPO_CLONE_URL}" | sed "s#://#://$BOT_PAT@#")
+          git remote set-url origin "$push_url"
+          git add charts/
+          git commit -m "chore: bump chart version"
+          git push origin "HEAD:${CI_COMMIT_SOURCE_BRANCH}"
+        fi
+
+when:
+  - event: pull_request
+    branch: main
