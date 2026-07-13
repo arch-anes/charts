@@ -15,7 +15,9 @@ steps:
       - |
         git fetch origin "${CI_COMMIT_TARGET_BRANCH}"
         changed=false
-        for chart_file in $(git diff --name-only "origin/${CI_COMMIT_TARGET_BRANCH}...HEAD" | grep 'charts/.*/Chart.yaml' || true); do
+        for chart in $(git diff --name-only "origin/${CI_COMMIT_TARGET_BRANCH}...HEAD" | grep '^charts/[^/]*/' | cut -d/ -f2 | sort -u); do
+          chart_file="charts/$chart/Chart.yaml"
+          [ -f "$chart_file" ] || continue
           old_version=$(git show "origin/${CI_COMMIT_TARGET_BRANCH}:$chart_file" | grep '^version:' | awk '{print $2}')
           cur_version=$(grep '^version:' "$chart_file" | awk '{print $2}')
           if [ "$old_version" = "$cur_version" ]; then
@@ -24,7 +26,7 @@ steps:
             patch=$(echo "$cur_version" | cut -d. -f3)
             bumped="$major.$minor.$((patch + 1))"
             sed -i "s/^version: .*/version: $bumped/" "$chart_file"
-            echo "Bumped $chart_file: $cur_version -> $bumped"
+            echo "Bumped $chart: $cur_version -> $bumped"
             changed=true
           fi
         done
