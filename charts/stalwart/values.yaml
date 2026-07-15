@@ -75,6 +75,10 @@ workload:
               path: /healthz/live
           # See https://stalw.art/docs/configuration/environment-variables/
           env: {}
+          securityContext:
+            runAsUser: 2000
+            runAsGroup: 2000
+            fsGroup: 2000
 
   # Configuration Job to apply the declarative plan
   apply-config:
@@ -144,6 +148,13 @@ persistence:
     mountPath: /etc/stalwart
     readOnly: true
     targetSelectAll: true
+  logs:
+    enabled: true
+    type: emptyDir
+    mountPath: /var/log/stalwart
+    targetSelector:
+      main:
+        main: {}
 
 configmap:
   config:
