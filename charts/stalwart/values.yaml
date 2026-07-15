@@ -164,12 +164,13 @@ configmap:
         {{- .Values.stalwart.baseConfig | toPrettyJson | nindent 2 }}
       applied-config.json: |
         {{- range $item := .Values.stalwart.appliedConfig }}
-        {{- range $type, $payload := $item }}
-        {{- $idKey := index $.Values.stalwart.appliedConfigAttributeMap $type | default "" }}
-        {{- if eq $idKey "singleton" }}
-        {"@type":"update","object":"{{ $type }}","value":{{ $payload | toJson }}}
+        {{- range $type, $config := $item }}
+        {{- if $config.singleton }}
+        {"@type":"update","object":"{{ $type }}","value":{{ $config.value | toJson }}}
+        {{- else if $config.matchOn }}
+        {"@type":"upsert","object":"{{ $type }}","value":{{ $config.value | toJson }},"matchOn":["{{ $config.matchOn }}"]}
         {{- else }}
-        {"@type":"upsert","object":"{{ $type }}","value":{{ $payload | toJson }},"matchOn":["{{ $idKey }}"]}
+        {"@type":"upsert","object":"{{ $type }}","value":{{ $config.value | toJson }}}
         {{- end }}
         {{- end }}
         {{- end }}
@@ -186,127 +187,13 @@ stalwart:
     authSecret:
       "@type": "EnvironmentVariable"
       variableName: POSTGRESQL_PASSWORD
-  appliedConfigAttributeMap:
-    Account: name
-    AccountPassword: singleton
-    AccountSettings: singleton
-    AcmeProvider: contact
-    Action: "@type"
-    AddressBook: singleton
-    AiModel: name
-    Alert: emailAlert
-    AllowedIp: address
-    ApiKey: description
-    Application: description
-    AppPassword: description
-    ArchivedItem: "@type"
-    ArfExternalReport: receivedAt
-    Asn: singleton
-    Authentication: singleton
-    BlobStore: singleton
-    BlockedIp: address
-    Bootstrap: singleton
-    Cache: singleton
-    Calendar: singleton
-    CalendarAlarm: singleton
-    CalendarScheduling: singleton
-    Certificate: certificate
-    ClusterNode: hostname
-    ClusterRole: name
-    Coordinator: singleton
-    DataRetention: singleton
-    DataStore: singleton
-    Directory: "@type"
-    DkimReportSettings: singleton
-    DkimSignature: domainId
-    DmarcExternalReport: receivedAt
-    DmarcInternalReport: deliverAt
-    DmarcReportSettings: singleton
-    DnsResolver: singleton
-    DnsServer: "@type"
-    Domain: name
-    DsnReportSettings: singleton
-    Email: singleton
-    Enterprise: singleton
-    EventTracingLevel: event
-    FileStorage: singleton
-    Http: singleton
-    HttpForm: singleton
-    HttpLookup: namespace
-    Imap: singleton
-    InMemoryStore: singleton
-    Jmap: singleton
-    Log: timestamp
-    MailingList: name
-    MaskedEmail: accountId
-    MemoryLookupKey: namespace
-    MemoryLookupKeyValue: namespace
-    Metric: timestamp
-    Metrics: singleton
-    MetricsStore: singleton
-    MtaConnectionStrategy: name
-    MtaDeliverySchedule: name
-    MtaExtensions: singleton
-    MtaHook: url
-    MtaInboundSession: singleton
-    MtaInboundThrottle: description
-    MtaMilter: hostname
-    MtaOutboundStrategy: singleton
-    MtaOutboundThrottle: description
-    MtaQueueQuota: description
-    MtaRoute: name
-    MtaStageAuth: singleton
-    MtaStageConnect: singleton
-    MtaStageData: singleton
-    MtaStageEhlo: singleton
-    MtaStageMail: singleton
-    MtaStageRcpt: singleton
-    MtaSts: singleton
-    MtaTlsStrategy: name
-    MtaVirtualQueue: name
-    NetworkListener: name
-    OAuthClient: clientId
-    OidcProvider: singleton
-    PublicKey: key
-    QueuedMessage: blobId
-    ReportSettings: singleton
-    Role: description
-    Search: singleton
-    SearchStore: singleton
-    Security: singleton
-    SenderAuth: singleton
-    Sharing: singleton
-    SieveSystemInterpreter: singleton
-    SieveSystemScript: name
-    SieveUserInterpreter: singleton
-    SieveUserScript: name
-    SpamClassifier: singleton
-    SpamDnsblServer: name
-    SpamDnsblSettings: singleton
-    SpamFileExtension: extension
-    SpamLlm: singleton
-    SpamPyzor: singleton
-    SpamRule: name
-    SpamSettings: singleton
-    SpamTag: tag
-    SpamTrainingSample: blobId
-    SpfReportSettings: singleton
-    StoreLookup: namespace
-    SystemSettings: singleton
-    Task: "@type"
-    TaskManager: singleton
-    Tenant: name
-    TlsExternalReport: receivedAt
-    TlsInternalReport: deliverAt
-    TlsReportSettings: singleton
-    Trace: timestamp
-    Tracer: "@type"
-    TracingStore: singleton
-    WebDav: singleton
-    WebHook: url
   appliedConfig:
+    # `singleton` (bool, default false): use an "update" action with the given value.
+    # `matchOn` (string): attribute name used for "upsert" matching.
+    # `value`: the payload sent to the API.
     - DataStore:
-        singleton:
+        singleton: true
+        value:
           "@type": PostgreSql
           host: postgresql-primary
           database: stalwart
@@ -315,25 +202,27 @@ stalwart:
             "@type": "EnvironmentVariable"
             variableName: POSTGRESQL_PASSWORD
     - NetworkListener:
-        smtp:
-          bind:
-            - "[::]:25"
-          protocol: smtp
-          useTls: false
-        smtps:
-          bind:
-            - "[::]:465"
-          protocol: smtp
-          tlsImplicit: true
-        submission:
-          bind:
-            - "[::]:587"
-          protocol: smtp
-        imaps:
-          bind:
-            - "[::]:993"
-          protocol: imap
-          tlsImplicit: true
+        matchOn: name
+        value:
+          smtp:
+            bind:
+              - "[::]:25"
+            protocol: smtp
+            useTls: false
+          smtps:
+            bind:
+              - "[::]:465"
+            protocol: smtp
+            tlsImplicit: true
+          submission:
+            bind:
+              - "[::]:587"
+            protocol: smtp
+          imaps:
+            bind:
+              - "[::]:993"
+            protocol: imap
+            tlsImplicit: true
 
 metrics:
   main:

@@ -1,0 +1,8 @@
+{{- /* stalwart.appliedConfig validation */ -}}
+{{- range $item := .Values.stalwart.appliedConfig -}}
+  {{- range $type, $config := $item -}}
+    {{- if and $config.singleton $config.matchOn -}}
+      {{- fail (printf "stalwart.appliedConfig[%s]: 'singleton' and 'matchOn' cannot be set together" $type) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
