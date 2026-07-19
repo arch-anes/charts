@@ -1,0 +1,14 @@
+apiVersion: v2
+name: gotify
+description: A simple server for sending and receiving messages
+type: application
+version: 1.0.0
+appVersion: 3.0.0 # renovate: image=ghcr.io/gotify/server
+dependencies:
+  - name: common
+    version: 29.x.x
+    repository: oci://oci.trueforge.org/truecharts
+    condition: ""
+    alias: ""
+    tags: []
+    import-values: []
