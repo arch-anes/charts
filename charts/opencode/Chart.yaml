@@ -3,7 +3,7 @@ name: opencode
 description: A web-based instance of OpenCode AI coding agent with Docker in Docker support
 type: application
 version: 1.0.5
-appVersion: 1.17.18 # renovate: image=ghcr.io/anomalyco/opencode
+appVersion: 1.18.3 # renovate: image=ghcr.io/anomalyco/opencode
 dependencies:
   - name: common
     version: 29.x.x
