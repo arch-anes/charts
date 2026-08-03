@@ -94,11 +94,15 @@ workload:
         wait-for-stalwart:
           enabled: true
           type: init
-          imageSelector: alpineImage
+          imageSelector: ubuntuImage
           command:
             - /bin/sh
             - -c
             - |
+              echo "Rendering applied-config.json with environment variables..."
+              envsubst < /etc/stalwart/applied-config.json > /etc/stalwart-rendered/applied-config.json
+              cat /etc/stalwart-rendered/applied-config.json
+
               # Wait for the service to be reachable
               STALWART_HOST="{{ include "tc.v1.common.lib.chart.names.fullname" . }}"
               until wget -qO- http://$STALWART_HOST:8080/healthz/ready > /dev/null 2>&1; do
@@ -124,7 +128,7 @@ workload:
             - --url
             - http://{{ include "tc.v1.common.lib.chart.names.fullname" . }}:8080
             - --file
-            - /etc/stalwart/applied-config.json
+            - /etc/stalwart-rendered/applied-config.json
           env:
             STALWART_USER: admin
             STALWART_PASSWORD: "somepass"
@@ -155,6 +159,14 @@ persistence:
     targetSelector:
       main:
         main: {}
+  rendered-config:
+    enabled: true
+    type: emptyDir
+    mountPath: /etc/stalwart-rendered
+    targetSelector:
+      apply-config:
+        wait-for-stalwart: {}
+        apply-config: {}
 
 configmap:
   config:
