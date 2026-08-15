@@ -10,7 +10,7 @@ cudaImage:
   pullPolicy: IfNotPresent
 
 rocmImage:
-  repository: ghcr.io/ggml-org/llama.cpp
+  repository: ghcr.io/arch-anes/llama.cpp
   tag: "server-rocm-{{ .Chart.AppVersion }}"
   pullPolicy: IfNotPresent
 
