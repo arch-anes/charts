@@ -3,9 +3,6 @@
   "extends": [
     "config:best-practices"
   ],
-  "schedule": [
-    "* 0-3 * * 1"
-  ],
   "automerge": true,
   "gitIgnoredAuthors": [
     "woodpecker-bot@users.noreply.woodpecker-ci.org"
