@@ -1,13 +1,13 @@
 ---
 clone:
   - name: git
-    image: woodpeckerci/plugin-git
+    image: woodpeckerci/plugin-git@sha256:b2d65ece33918fd8763192effb11b226ff4631faa1f3568c941ae69462b1f1be
     settings:
       partial: false
 
 steps:
   - name: Configure git
-    image: ghcr.io/arch-anes/dev-container-kubernetes:latest
+    image: ghcr.io/arch-anes/dev-container-kubernetes:latest@sha256:8e723fc9699a9f8a2952c25b1076b72ef91d87a07060da09deb437b67a58dc6a
     environment:
       BOT_PAT:
         from_secret: github_push_token
