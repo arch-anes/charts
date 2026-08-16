@@ -1,13 +1,13 @@
 ---
 clone:
   - name: git
-    image: woodpeckerci/plugin-git
+    image: woodpeckerci/plugin-git@sha256:b2d65ece33918fd8763192effb11b226ff4631faa1f3568c941ae69462b1f1be
     settings:
       partial: false
 
 steps:
   - name: Bump chart version
-    image: mcr.microsoft.com/devcontainers/base:ubuntu26.04
+    image: mcr.microsoft.com/devcontainers/base:ubuntu26.04@sha256:1f8bb87ca6d342a587a9163a5a1ea8c487bcd4f149e8483a5ff711f795f0776d
     environment:
       BOT_PAT:
         from_secret: github_push_token
