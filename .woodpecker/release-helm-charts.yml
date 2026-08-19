@@ -1,7 +1,7 @@
 ---
 clone:
   - name: git
-    image: woodpeckerci/plugin-git@sha256:b2d65ece33918fd8763192effb11b226ff4631faa1f3568c941ae69462b1f1be
+    image: woodpeckerci/plugin-git@sha256:0f06b03ec33137b556c77538563f66c400339052d0c5199d4c3ad1a2a37e1964
     settings:
       partial: false
 
