@@ -2,8 +2,8 @@ apiVersion: v2
 name: gotify
 description: A simple server for sending and receiving messages
 type: application
-version: 1.0.1
-appVersion: 3.0.0 # renovate: image=ghcr.io/gotify/server
+version: 1.0.2
+appVersion: 3.1.0 # renovate: image=ghcr.io/gotify/server
 dependencies:
   - name: common
     version: 29.x.x
