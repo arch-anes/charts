@@ -7,7 +7,7 @@ clone:
 
 steps:
   - name: Configure git
-    image: ghcr.io/arch-anes/dev-container-kubernetes:latest@sha256:1f0fe1d5c2ff442e77ccf8bf6acf4a68ed4731a67d227e6693dfcb0f5db20aa7
+    image: ghcr.io/arch-anes/dev-container-kubernetes:latest@sha256:c63b4abaeb4b6adc607ccb2d1ea96a0c108183b1bbe179777e8ab6e72040ac6f
     environment:
       BOT_PAT:
         from_secret: github_push_token
