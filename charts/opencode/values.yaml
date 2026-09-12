@@ -61,18 +61,24 @@ workload:
             liveness:
               enabled: true
               initialDelaySeconds: 30
-              type: tcp
-              port: 2376
+              type: exec
+              command:
+                - docker
+                - info
             readiness:
               enabled: true
               initialDelaySeconds: 30
-              type: tcp
-              port: 2376
+              type: exec
+              command:
+                - docker
+                - info
             startup:
               enabled: true
               initialDelaySeconds: 30
-              type: tcp
-              port: 2376
+              type: exec
+              command:
+                - docker
+                - info
 
 securityContext:
   container:
