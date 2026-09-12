@@ -103,7 +103,7 @@ persistence:
         main: {}
   workspaces:
     enabled: true
-    mountPath: /home/vscode/workspaces
+    mountPath: /workspaces
     targetSelector:
       main:
         main: {}
