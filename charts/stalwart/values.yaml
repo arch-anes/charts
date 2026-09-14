@@ -217,23 +217,28 @@ stalwart:
         matchOn: name
         value:
           smtp:
+            name: smtp
             bind:
-              - "[::]:25"
+              "[::]:25": true
             protocol: smtp
             useTls: false
           smtps:
+            name: submissions
             bind:
-              - "[::]:465"
+              "[::]:465": true
             protocol: smtp
             tlsImplicit: true
-          submission:
-            bind:
-              - "[::]:587"
-            protocol: smtp
           imaps:
+            name: imaps
             bind:
-              - "[::]:993"
+              "[::]:993": true
             protocol: imap
+            tlsImplicit: true
+          pop3s:
+            name: pop3s
+            bind:
+              "[::]:995": true
+            protocol: pop3
             tlsImplicit: true
 
 metrics:
