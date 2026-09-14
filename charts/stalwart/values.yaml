@@ -179,6 +179,8 @@ configmap:
         {{- range $type, $config := $item }}
         {{- if $config.singleton }}
         {"@type":"update","object":"{{ $type }}","value":{{ $config.value | toJson }}}
+        {{- else if $config.createOnly }}
+        {"@type":"create","object":"{{ $type }}","value":{{ $config.value | toJson }}}
         {{- else if $config.matchOn }}
         {"@type":"upsert","object":"{{ $type }}","value":{{ $config.value | toJson }},"matchOn":["{{ $config.matchOn }}"]}
         {{- else }}
@@ -240,6 +242,11 @@ stalwart:
               "[::]:995": true
             protocol: pop3
             tlsImplicit: true
+    - Action:
+        createOnly: true
+        value:
+          reload:
+            "@type": "ReloadSettings"
 
 metrics:
   main:
