@@ -82,7 +82,7 @@ workload:
 
   # Configuration Job to apply the declarative plan
   apply-config:
-    enabled: true
+    enabled: "{{ not (empty .Values.stalwart.runtimeConfig) }}"
     type: Job
     annotations:
       "helm.sh/hook": post-install,post-upgrade
@@ -100,8 +100,8 @@ workload:
             - -c
             - |
               echo "Rendering applied-config.json with environment variables..."
-              envsubst < /etc/stalwart/applied-config.json > /etc/stalwart-rendered/applied-config.json
-              cat /etc/stalwart-rendered/applied-config.json
+              envsubst < /etc/stalwart/runtime-config.ndjson > /etc/stalwart-rendered/runtime-config.ndjson
+              cat /etc/stalwart-rendered/runtime-config.ndjson
 
               # Wait for the service to be reachable
               STALWART_HOST="{{ include "tc.v1.common.lib.chart.names.fullname" . }}"
@@ -128,7 +128,7 @@ workload:
             - --url
             - http://{{ include "tc.v1.common.lib.chart.names.fullname" . }}:8080
             - --file
-            - /etc/stalwart-rendered/applied-config.json
+            - /etc/stalwart-rendered/runtime-config.ndjson
           env:
             STALWART_USER: admin
             STALWART_PASSWORD: "somepass"
@@ -174,23 +174,15 @@ configmap:
     data:
       config.json: |
         {{- .Values.stalwart.baseConfig | toPrettyJson | nindent 2 }}
-      applied-config.json: |
-        {{- range $item := .Values.stalwart.appliedConfig }}
-        {{- range $type, $config := $item }}
-        {{- if $config.singleton }}
-        {"@type":"update","object":"{{ $type }}","value":{{ $config.value | toJson }}}
-        {{- else if $config.createOnly }}
-        {"@type":"create","object":"{{ $type }}","value":{{ $config.value | toJson }}}
-        {{- else if $config.matchOn }}
-        {"@type":"upsert","object":"{{ $type }}","value":{{ $config.value | toJson }},"matchOn":["{{ $config.matchOn }}"]}
-        {{- else }}
-        {"@type":"upsert","object":"{{ $type }}","value":{{ $config.value | toJson }}}
-        {{- end }}
-        {{- end }}
+      runtime-config.ndjson: |
+        {{- range .Values.stalwart.runtimeConfig }}
+        {{ . | toJson }}
         {{- end }}
 
 # See https://stalw.art/docs/configuration/declarative-deployments/
-# This will be converted to JSON and applied via the sidecar
+# Each entry is written as an NDJSON line and applied by the post-install and
+# post-upgrade Job. The Job runs envsubst first, so use $VARIABLE or ${VARIABLE}
+# for values provided through its init container environment.
 stalwart:
   baseConfig:
     "@type": "PostgreSql"
@@ -201,52 +193,51 @@ stalwart:
     authSecret:
       "@type": "EnvironmentVariable"
       variableName: POSTGRESQL_PASSWORD
-  appliedConfig:
-    # `singleton` (bool, default false): use an "update" action with the given value.
-    # `matchOn` (string): attribute name used for "upsert" matching.
-    # `value`: the payload sent to the API.
-    - DataStore:
-        singleton: true
-        value:
-          "@type": PostgreSql
-          host: postgresql-primary
-          database: stalwart
-          authUsername: stalwart
-          authSecret:
-            "@type": "EnvironmentVariable"
-            variableName: POSTGRESQL_PASSWORD
-    - NetworkListener:
-        matchOn: name
-        value:
-          smtp:
-            name: smtp
-            bind:
-              "[::]:25": true
-            protocol: smtp
-            useTls: false
-          smtps:
-            name: submissions
-            bind:
-              "[::]:465": true
-            protocol: smtp
-            tlsImplicit: true
-          imaps:
-            name: imaps
-            bind:
-              "[::]:993": true
-            protocol: imap
-            tlsImplicit: true
-          pop3s:
-            name: pop3s
-            bind:
-              "[::]:995": true
-            protocol: pop3
-            tlsImplicit: true
-    - Action:
-        createOnly: true
-        value:
-          reload:
-            "@type": "ReloadSettings"
+  runtimeConfig:
+    - "@type": update
+      object: DataStore
+      value:
+        "@type": PostgreSql
+        host: postgresql-primary
+        database: stalwart
+        authUsername: stalwart
+        authSecret:
+          "@type": "EnvironmentVariable"
+          variableName: POSTGRESQL_PASSWORD
+    - "@type": upsert
+      object: NetworkListener
+      matchOn:
+        - name
+      value:
+        smtp:
+          name: smtp
+          bind:
+            "[::]:25": true
+          protocol: smtp
+          useTls: false
+        smtps:
+          name: submissions
+          bind:
+            "[::]:465": true
+          protocol: smtp
+          tlsImplicit: true
+        imaps:
+          name: imaps
+          bind:
+            "[::]:993": true
+          protocol: imap
+          tlsImplicit: true
+        pop3s:
+          name: pop3s
+          bind:
+            "[::]:995": true
+          protocol: pop3
+          tlsImplicit: true
+    - "@type": create
+      object: Action
+      value:
+        reload:
+          "@type": "ReloadSettings"
 
 metrics:
   main:
