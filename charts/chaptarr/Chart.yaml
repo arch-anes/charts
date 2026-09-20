@@ -1,0 +1,14 @@
+apiVersion: v2
+name: chaptarr
+description: An audiobook and eBook collection manager
+type: application
+version: 0.1.0
+appVersion: 0.9.958 # renovate: image=chaptarr/chaptarr
+dependencies:
+  - name: common
+    version: 29.x.x
+    repository: oci://oci.trueforge.org/truecharts
+    condition: ""
+    alias: ""
+    tags: []
+    import-values: []
