@@ -2,7 +2,7 @@ apiVersion: v2
 name: stalwart
 description: A secure, scalable, and comprehensive open-source mail server
 type: application
-version: 0.2.3
+version: 0.2.4
 appVersion: 0.16.25 # renovate: image=stalwartlabs/stalwart
 dependencies:
   - name: common
