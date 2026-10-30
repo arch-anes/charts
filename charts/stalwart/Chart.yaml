@@ -3,7 +3,7 @@ name: stalwart
 description: A secure, scalable, and comprehensive open-source mail server
 type: application
 version: 0.2.8
-appVersion: 1.0.0 # renovate: image=stalwartlabs/stalwart
+appVersion: 1.0.1 # renovate: image=stalwartlabs/stalwart
 dependencies:
   - name: common
     version: 29.x.x
