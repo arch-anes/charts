@@ -6,17 +6,32 @@ clone:
       partial: false
 
 steps:
+  - name: Create GitHub App token
+    image: ghcr.io/yyewolf/woodpecker-plugins/github-app-token:1.2.4
+    settings:
+      github_app_id:
+        from_secret: archanes_github_app_id
+      github_installation_id:
+        from_secret: archanes_github_app_installation_id
+      github_private_key_pem:
+        from_secret: archanes_github_app_private_key
+      output_file: .github_token
+
   - name: Configure git
     image: ghcr.io/arch-anes/dev-container-kubernetes:latest@sha256:9f94370a09a78cb77788f1f1bda197c2a926d61f08df7edcb7211e825007da0b
-    environment:
-      BOT_PAT:
-        from_secret: github_push_token
     commands:
       - sudo chown -R "$(id -u):$(id -g)" .
-      - git config user.name "Woodpecker CI"
-      - git config user.email "woodpecker@users.noreply.woodpecker-ci.org"
-      - push_url=$(echo "${CI_REPO_CLONE_URL}" | sed "s#://#://$BOT_PAT@#")
-      - git remote set-url origin "$push_url"
+      - |
+        token=$(cat .github_token)
+        rm -f .github_token
+        if [ -z "$token" ]; then
+          echo "github app token is missing" >&2
+          exit 1
+        fi
+        git config user.name "Woodpecker CI"
+        git config user.email "woodpecker@users.noreply.woodpecker-ci.org"
+        push_url=$(echo "${CI_REPO_CLONE_URL}" | sed "s#://#://x-access-token:$token@#")
+        git remote set-url origin "$push_url"
       - for chart in charts/*/; do helm dependency build "$chart"; done
       - mkdir -p ./artifacts
       - for chart in charts/*/; do helm package "$chart" -d ./artifacts; done

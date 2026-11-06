@@ -6,13 +6,27 @@ clone:
       partial: false
 
 steps:
+  - name: Create GitHub App token
+    image: ghcr.io/yyewolf/woodpecker-plugins/github-app-token:1.2.4
+    settings:
+      github_app_id:
+        from_secret: archanes_github_app_id
+      github_installation_id:
+        from_secret: archanes_github_app_installation_id
+      github_private_key_pem:
+        from_secret: archanes_github_app_private_key
+      output_file: .github_token
+
   - name: Bump chart version
     image: mcr.microsoft.com/devcontainers/base:ubuntu26.04@sha256:b1e3b08610ae0b2599f57c3a492eebc93d1d26dbaefb4a0bad0caa7149e4ec95
-    environment:
-      BOT_PAT:
-        from_secret: github_push_token
     commands:
       - |
+        token=$(cat .github_token)
+        rm -f .github_token
+        if [ -z "$token" ]; then
+          echo "github app token is missing" >&2
+          exit 1
+        fi
         git fetch origin "${CI_COMMIT_TARGET_BRANCH}"
         changed=false
         for chart in $(git diff --name-only "origin/${CI_COMMIT_TARGET_BRANCH}...HEAD" | grep '^charts/[^/]*/' | cut -d/ -f2 | sort -u); do
@@ -33,7 +47,7 @@ steps:
         if [ "$changed" = "true" ]; then
           git config user.name "woodpecker-bot"
           git config user.email "woodpecker-bot@users.noreply.woodpecker-ci.org"
-          push_url=$(echo "${CI_REPO_CLONE_URL}" | sed "s#://#://$BOT_PAT@#")
+          push_url=$(echo "${CI_REPO_CLONE_URL}" | sed "s#://#://x-access-token:$token@#")
           git remote set-url origin "$push_url"
           git add charts/
           git commit -m "chore: bump chart version"
