@@ -45,30 +45,11 @@ securityContext:
     runAsGroup: 1000
     fsGroup: 1000
     allowPrivilegeEscalation: true
-    readOnlyRootFilesystem: false
 
 persistence:
-  share:
+  home:
     enabled: true
-    mountPath: /home/vscode/.local/share/opencode
-    targetSelector:
-      main:
-        main: {}
-  config:
-    enabled: true
-    mountPath: /home/vscode/.config/opencode
-    targetSelector:
-      main:
-        main: {}
-  cache:
-    enabled: true
-    mountPath: /home/vscode/.cache/opencode
-    targetSelector:
-      main:
-        main: {}
-  workspaces:
-    enabled: true
-    mountPath: /workspaces
+    mountPath: /home/vscode
     targetSelector:
       main:
         main: {}
