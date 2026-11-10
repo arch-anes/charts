@@ -2,7 +2,7 @@ apiVersion: v2
 name: chaptarr
 description: An audiobook and eBook collection manager
 type: application
-version: 0.1.2
+version: 0.1.3
 appVersion: 0.9.1000 # renovate: image=chaptarr/chaptarr
 dependencies:
   - name: common
