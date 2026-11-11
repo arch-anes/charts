@@ -58,3 +58,10 @@ persistence:
     targetSelector:
       main:
         main: {}
+  # Podman extracts images under /var/tmp, which is on the read-only root
+  # filesystem and therefore needs a writable mount.
+  vartmp:
+    enabled: true
+    type: emptyDir
+    mountPath: /var/tmp
+    targetSelectAll: true
