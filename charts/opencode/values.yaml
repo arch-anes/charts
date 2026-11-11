@@ -44,9 +44,7 @@ securityContext:
     runAsUser: 1000
     runAsGroup: 1000
     fsGroup: 1000
-    # Blocks setuid helpers (sudo, newuidmap, mount, ...) from gaining
-    # privileges. opencode itself does not need any of them.
-    allowPrivilegeEscalation: false
+    allowPrivilegeEscalation: true
 
 podOptions:
   # Run the pod in its own user namespace so that any privilege it does have
