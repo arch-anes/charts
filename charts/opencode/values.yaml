@@ -41,19 +41,21 @@ workload:
 
 # https://www.redhat.com/en/blog/podman-inside-kubernetes
 securityContext:
-  seccompProfile:
-    type: Unconfined
-  capabilities:
-    add:
-      - SYS_ADMIN
-      - MKNOD
-      - SYS_CHROOT
-      - SETFCAP
+  pod:
+    fsGroup: 1000
+    fsGroupChangePolicy: OnRootMismatch
   container:
     runAsUser: 1000
     runAsGroup: 1000
-    fsGroup: 1000
     allowPrivilegeEscalation: true
+    seccompProfile:
+      type: Unconfined
+    capabilities:
+      add:
+        - SYS_ADMIN
+        - MKNOD
+        - SYS_CHROOT
+        - SETFCAP
 
 podOptions:
   # Run the pod in its own user namespace so that any privilege it does have
