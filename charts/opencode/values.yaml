@@ -39,7 +39,16 @@ workload:
             - --port
             - "4096"
 
+# https://www.redhat.com/en/blog/podman-inside-kubernetes
 securityContext:
+  seccompProfile:
+    type: Unconfined
+  capabilities:
+    add:
+      - SYS_ADMIN
+      - MKNOD
+      - SYS_CHROOT
+      - SETFCAP
   container:
     runAsUser: 1000
     runAsGroup: 1000
