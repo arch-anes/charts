@@ -50,6 +50,24 @@
       ],
       "versioning": "regex:^b(?<major>\\d+)$",
       "extractVersion": "^server-(?<version>b\\d+)$"
+    },
+    {
+      "description": "Bump each chart's version by the severity of the update. llama.cpp tags are build numbers, so they stay patch.",
+      "matchFileNames": [
+        "charts/**"
+      ],
+      "bumpVersions": [
+        {
+          "name": "bump chart version",
+          "filePatterns": [
+            "{{packageFileDir}}/Chart.{yaml,yml}"
+          ],
+          "matchStrings": [
+            "(?:^|\\n)version:[ \\t]*[\"']?(?<version>[^\"'\\s#]+)"
+          ],
+          "bumpType": "{{#if (includes (lookupArray upgrades \"depName\") \"ghcr.io/ggml-org/llama.cpp\")}}patch{{else if (includes (lookupArray upgrades \"updateType\") \"major\")}}major{{else if (includes (lookupArray upgrades \"updateType\") \"minor\")}}minor{{else}}patch{{/if}}"
+        }
+      ]
     }
   ]
 }
