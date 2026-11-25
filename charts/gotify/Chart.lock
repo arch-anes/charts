@@ -1,6 +1,6 @@
 dependencies:
 - name: common
   repository: oci://oci.trueforge.org/truecharts
-  version: 29.13.0
-digest: sha256:2087308c174f1bf7ec33368ceb1152a9706084fb12126bcd6e3118f6dccbdd9d
-generated: "2026-08-17T01:43:39.014650901Z"
+  version: 32.9.0
+digest: sha256:285db26409ab62ac0ae59fa03e9d0379aff56022e669627d36f3183d0fc8bd10
+generated: "2026-11-25T04:20:25.605026844Z"
