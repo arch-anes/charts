@@ -3,7 +3,7 @@ entries:
   affine:
   - apiVersion: v2
     appVersion: 0.25.2
-    created: "2026-11-24T21:45:43.319757286Z"
+    created: "2026-11-25T04:23:16.485867234Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -23,7 +23,7 @@ entries:
   appflowy:
   - apiVersion: v2
     appVersion: 0.9.64
-    created: "2026-11-24T21:45:43.369082947Z"
+    created: "2026-11-25T04:23:16.522013172Z"
     dependencies:
     - condition: postgresql.enabled
       name: postgresql
@@ -47,7 +47,21 @@ entries:
   chaptarr:
   - apiVersion: v2
     appVersion: 0.9.1000
-    created: "2026-11-24T21:45:43.464126642Z"
+    created: "2026-11-25T04:23:16.649849461Z"
+    dependencies:
+    - name: common
+      repository: oci://oci.trueforge.org/truecharts
+      version: 32.x.x
+    description: An audiobook and eBook collection manager
+    digest: 1dce33fc01470814d0467b240d88aa776cb6c7dd153aca96d008a32585108080
+    name: chaptarr
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/chaptarr-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 0.9.1000
+    created: "2026-11-25T04:23:16.607303151Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -61,7 +75,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 0.9.999
-    created: "2026-11-24T21:45:43.438880561Z"
+    created: "2026-11-25T04:23:16.583572121Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -75,7 +89,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.9.965
-    created: "2026-11-24T21:45:43.414487801Z"
+    created: "2026-11-25T04:23:16.559452909Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -89,7 +103,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.9.958
-    created: "2026-11-24T21:45:43.391560269Z"
+    created: "2026-11-25T04:23:16.540472929Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -104,9 +118,9 @@ entries:
   generic:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-11-24T21:45:43.465591345Z"
+    created: "2026-11-25T04:23:16.651235708Z"
     description: A generic Helm chart for Kubernetes
-    digest: acd5162aeaf03fd33146aac4dbdf97340c23af276499e557180b8ff29816652d
+    digest: ea4af2f5eb0d2f23f05309f04e2035d597ca80b964285e3a95d6f1d811eb4065
     name: generic
     type: application
     urls:
@@ -114,7 +128,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-11-24T21:45:43.465101375Z"
+    created: "2026-11-25T04:23:16.650786143Z"
     description: A generic Helm chart for Kubernetes
     digest: 0e4ce8f90dce659cf6f12ecaa6d4a6b68754328527d7646958319135df3b1aa5
     name: generic
@@ -124,7 +138,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-11-24T21:45:43.464654037Z"
+    created: "2026-11-25T04:23:16.650317088Z"
     description: A generic Helm chart for Kubernetes
     digest: 90cefe45508a3edf31275601945b3e24ca306838d1e1b7873095559aecb85372
     name: generic
@@ -135,7 +149,21 @@ entries:
   gotify:
   - apiVersion: v2
     appVersion: 3.1.1
-    created: "2026-11-24T21:45:43.555256794Z"
+    created: "2026-11-25T04:23:16.786920186Z"
+    dependencies:
+    - name: common
+      repository: oci://oci.trueforge.org/truecharts
+      version: 32.x.x
+    description: A simple server for sending and receiving messages
+    digest: b19917036a392d27649ab806436acaa5cff6fded9f1cb0276a86e91a4e74ee78
+    name: gotify
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/gotify-1.0.4.tgz
+    version: 1.0.4
+  - apiVersion: v2
+    appVersion: 3.1.1
+    created: "2026-11-25T04:23:16.743242705Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -149,7 +177,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: 3.1.0
-    created: "2026-11-24T21:45:43.533312691Z"
+    created: "2026-11-25T04:23:16.719146318Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -163,7 +191,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2026-11-24T21:45:43.509249866Z"
+    created: "2026-11-25T04:23:16.69728757Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -177,7 +205,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 3.0.0
-    created: "2026-11-24T21:45:43.485969622Z"
+    created: "2026-11-25T04:23:16.674301652Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -192,7 +220,21 @@ entries:
   llama-cpp:
   - apiVersion: v2
     appVersion: b12679
-    created: "2026-11-24T21:45:45.780060145Z"
+    created: "2026-11-25T04:23:18.968833765Z"
+    dependencies:
+    - name: common
+      repository: oci://oci.trueforge.org/truecharts
+      version: 32.x.x
+    description: A Helm chart for llama.cpp server based on trueforge common library
+    digest: bdbeddbca062d28f8a7807e87c14277accf92e6ad0038fbcc3c75579480de216
+    name: llama-cpp
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/llama-cpp-1.2.82.tgz
+    version: 1.2.82
+  - apiVersion: v2
+    appVersion: b12679
+    created: "2026-11-25T04:23:18.921246033Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -206,7 +248,7 @@ entries:
     version: 1.2.81
   - apiVersion: v2
     appVersion: b12648
-    created: "2026-11-24T21:45:45.765055452Z"
+    created: "2026-11-25T04:23:18.899665131Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -220,7 +262,7 @@ entries:
     version: 1.2.80
   - apiVersion: v2
     appVersion: b12627
-    created: "2026-11-24T21:45:45.723264114Z"
+    created: "2026-11-25T04:23:18.851804105Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -234,7 +276,7 @@ entries:
     version: 1.2.79
   - apiVersion: v2
     appVersion: b12602
-    created: "2026-11-24T21:45:45.699355061Z"
+    created: "2026-11-25T04:23:18.830051546Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -248,7 +290,7 @@ entries:
     version: 1.2.78
   - apiVersion: v2
     appVersion: b12464
-    created: "2026-11-24T21:45:45.673990733Z"
+    created: "2026-11-25T04:23:18.805079365Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -262,7 +304,7 @@ entries:
     version: 1.2.77
   - apiVersion: v2
     appVersion: b12429
-    created: "2026-11-24T21:45:45.651094743Z"
+    created: "2026-11-25T04:23:18.779953273Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -276,7 +318,7 @@ entries:
     version: 1.2.76
   - apiVersion: v2
     appVersion: b12352
-    created: "2026-11-24T21:45:45.626018586Z"
+    created: "2026-11-25T04:23:18.757475215Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -290,7 +332,7 @@ entries:
     version: 1.2.75
   - apiVersion: v2
     appVersion: b12316
-    created: "2026-11-24T21:45:45.599883972Z"
+    created: "2026-11-25T04:23:18.734115678Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -304,7 +346,7 @@ entries:
     version: 1.2.74
   - apiVersion: v2
     appVersion: b12282
-    created: "2026-11-24T21:45:45.569935217Z"
+    created: "2026-11-25T04:23:18.711915809Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -318,7 +360,7 @@ entries:
     version: 1.2.73
   - apiVersion: v2
     appVersion: b12242
-    created: "2026-11-24T21:45:45.547137505Z"
+    created: "2026-11-25T04:23:18.687238958Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -332,7 +374,7 @@ entries:
     version: 1.2.72
   - apiVersion: v2
     appVersion: b12211
-    created: "2026-11-24T21:45:45.52206651Z"
+    created: "2026-11-25T04:23:18.663700868Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -346,7 +388,7 @@ entries:
     version: 1.2.71
   - apiVersion: v2
     appVersion: b12199
-    created: "2026-11-24T21:45:45.49621481Z"
+    created: "2026-11-25T04:23:18.639316878Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -360,7 +402,7 @@ entries:
     version: 1.2.70
   - apiVersion: v2
     appVersion: b12182
-    created: "2026-11-24T21:45:45.452716537Z"
+    created: "2026-11-25T04:23:18.594231305Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -374,7 +416,7 @@ entries:
     version: 1.2.69
   - apiVersion: v2
     appVersion: b12169
-    created: "2026-11-24T21:45:45.427138923Z"
+    created: "2026-11-25T04:23:18.569399403Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -388,7 +430,7 @@ entries:
     version: 1.2.68
   - apiVersion: v2
     appVersion: b12124
-    created: "2026-11-24T21:45:45.404663471Z"
+    created: "2026-11-25T04:23:18.545988382Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -402,7 +444,7 @@ entries:
     version: 1.2.67
   - apiVersion: v2
     appVersion: b12004
-    created: "2026-11-24T21:45:45.381442901Z"
+    created: "2026-11-25T04:23:18.521463471Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -416,7 +458,7 @@ entries:
     version: 1.2.66
   - apiVersion: v2
     appVersion: b11669
-    created: "2026-11-24T21:45:45.331134733Z"
+    created: "2026-11-25T04:23:18.4782167Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -430,7 +472,7 @@ entries:
     version: 1.2.53
   - apiVersion: v2
     appVersion: b11641
-    created: "2026-11-24T21:45:45.303489559Z"
+    created: "2026-11-25T04:23:18.454088613Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -444,7 +486,7 @@ entries:
     version: 1.2.52
   - apiVersion: v2
     appVersion: b11610
-    created: "2026-11-24T21:45:45.274500883Z"
+    created: "2026-11-25T04:23:18.430260754Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -458,7 +500,7 @@ entries:
     version: 1.2.51
   - apiVersion: v2
     appVersion: b11580
-    created: "2026-11-24T21:45:45.251413549Z"
+    created: "2026-11-25T04:23:18.405344578Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -472,7 +514,7 @@ entries:
     version: 1.2.50
   - apiVersion: v2
     appVersion: b11561
-    created: "2026-11-24T21:45:45.201778085Z"
+    created: "2026-11-25T04:23:18.356551821Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -486,7 +528,7 @@ entries:
     version: 1.2.49
   - apiVersion: v2
     appVersion: b11552
-    created: "2026-11-24T21:45:45.176958478Z"
+    created: "2026-11-25T04:23:18.332402101Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -500,7 +542,7 @@ entries:
     version: 1.2.48
   - apiVersion: v2
     appVersion: b11541
-    created: "2026-11-24T21:45:45.152865262Z"
+    created: "2026-11-25T04:23:18.307169958Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -514,7 +556,7 @@ entries:
     version: 1.2.47
   - apiVersion: v2
     appVersion: b11515
-    created: "2026-11-24T21:45:45.131327235Z"
+    created: "2026-11-25T04:23:18.28402369Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -528,7 +570,7 @@ entries:
     version: 1.2.46
   - apiVersion: v2
     appVersion: b11459
-    created: "2026-11-24T21:45:45.107068631Z"
+    created: "2026-11-25T04:23:18.269159076Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -542,7 +584,7 @@ entries:
     version: 1.2.45
   - apiVersion: v2
     appVersion: b11434
-    created: "2026-11-24T21:45:45.082598168Z"
+    created: "2026-11-25T04:23:18.245569404Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -556,7 +598,7 @@ entries:
     version: 1.2.44
   - apiVersion: v2
     appVersion: b11429
-    created: "2026-11-24T21:45:45.060613177Z"
+    created: "2026-11-25T04:23:18.220514236Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -570,7 +612,7 @@ entries:
     version: 1.2.43
   - apiVersion: v2
     appVersion: b11382
-    created: "2026-11-24T21:45:45.035628598Z"
+    created: "2026-11-25T04:23:18.196145392Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -584,7 +626,7 @@ entries:
     version: 1.2.42
   - apiVersion: v2
     appVersion: b11371
-    created: "2026-11-24T21:45:45.011643181Z"
+    created: "2026-11-25T04:23:18.172190288Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -598,7 +640,7 @@ entries:
     version: 1.2.41
   - apiVersion: v2
     appVersion: b11223
-    created: "2026-11-24T21:45:44.989707617Z"
+    created: "2026-11-25T04:23:18.146744916Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -612,7 +654,7 @@ entries:
     version: 1.2.40
   - apiVersion: v2
     appVersion: b11206
-    created: "2026-11-24T21:45:44.944115452Z"
+    created: "2026-11-25T04:23:18.095388414Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -626,7 +668,7 @@ entries:
     version: 1.2.39
   - apiVersion: v2
     appVersion: b11176
-    created: "2026-11-24T21:45:44.9213945Z"
+    created: "2026-11-25T04:23:18.070589734Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -640,7 +682,7 @@ entries:
     version: 1.2.38
   - apiVersion: v2
     appVersion: b11151
-    created: "2026-11-24T21:45:44.901379151Z"
+    created: "2026-11-25T04:23:18.048132294Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -654,7 +696,7 @@ entries:
     version: 1.2.37
   - apiVersion: v2
     appVersion: b11146
-    created: "2026-11-24T21:45:44.876814361Z"
+    created: "2026-11-25T04:23:18.023183603Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -668,7 +710,7 @@ entries:
     version: 1.2.36
   - apiVersion: v2
     appVersion: b11096
-    created: "2026-11-24T21:45:44.853806717Z"
+    created: "2026-11-25T04:23:18.000504378Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -682,7 +724,7 @@ entries:
     version: 1.2.35
   - apiVersion: v2
     appVersion: b11065
-    created: "2026-11-24T21:45:44.828965707Z"
+    created: "2026-11-25T04:23:17.97599317Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -696,7 +738,7 @@ entries:
     version: 1.2.34
   - apiVersion: v2
     appVersion: b11058
-    created: "2026-11-24T21:45:44.802596909Z"
+    created: "2026-11-25T04:23:17.951330425Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -710,7 +752,7 @@ entries:
     version: 1.2.33
   - apiVersion: v2
     appVersion: b11046
-    created: "2026-11-24T21:45:44.779805625Z"
+    created: "2026-11-25T04:23:17.92675155Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -724,7 +766,7 @@ entries:
     version: 1.2.32
   - apiVersion: v2
     appVersion: b11028
-    created: "2026-11-24T21:45:44.755058471Z"
+    created: "2026-11-25T04:23:17.905899705Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -738,7 +780,7 @@ entries:
     version: 1.2.31
   - apiVersion: v2
     appVersion: b11011
-    created: "2026-11-24T21:45:44.7311855Z"
+    created: "2026-11-25T04:23:17.880077433Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -752,7 +794,7 @@ entries:
     version: 1.2.30
   - apiVersion: v2
     appVersion: b10991
-    created: "2026-11-24T21:45:44.684346372Z"
+    created: "2026-11-25T04:23:17.832243856Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -766,7 +808,7 @@ entries:
     version: 1.2.29
   - apiVersion: v2
     appVersion: b10975
-    created: "2026-11-24T21:45:44.663550722Z"
+    created: "2026-11-25T04:23:17.808123531Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -780,7 +822,7 @@ entries:
     version: 1.2.28
   - apiVersion: v2
     appVersion: b10969
-    created: "2026-11-24T21:45:44.647929663Z"
+    created: "2026-11-25T04:23:17.782057861Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -794,7 +836,7 @@ entries:
     version: 1.2.27
   - apiVersion: v2
     appVersion: b10951
-    created: "2026-11-24T21:45:44.624011949Z"
+    created: "2026-11-25T04:23:17.7616097Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -808,7 +850,7 @@ entries:
     version: 1.2.26
   - apiVersion: v2
     appVersion: b10920
-    created: "2026-11-24T21:45:44.601511512Z"
+    created: "2026-11-25T04:23:17.73748025Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -822,7 +864,7 @@ entries:
     version: 1.2.25
   - apiVersion: v2
     appVersion: b10902
-    created: "2026-11-24T21:45:44.583940179Z"
+    created: "2026-11-25T04:23:17.714387366Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -836,7 +878,7 @@ entries:
     version: 1.2.24
   - apiVersion: v2
     appVersion: b10884
-    created: "2026-11-24T21:45:44.557617016Z"
+    created: "2026-11-25T04:23:17.692364086Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -850,7 +892,7 @@ entries:
     version: 1.2.23
   - apiVersion: v2
     appVersion: b10868
-    created: "2026-11-24T21:45:44.533301838Z"
+    created: "2026-11-25T04:23:17.668870516Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -864,7 +906,7 @@ entries:
     version: 1.2.22
   - apiVersion: v2
     appVersion: b10853
-    created: "2026-11-24T21:45:44.513209095Z"
+    created: "2026-11-25T04:23:17.644654055Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -878,7 +920,7 @@ entries:
     version: 1.2.21
   - apiVersion: v2
     appVersion: b10830
-    created: "2026-11-24T21:45:44.491995421Z"
+    created: "2026-11-25T04:23:17.63285591Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -892,7 +934,7 @@ entries:
     version: 1.2.20
   - apiVersion: v2
     appVersion: b10820
-    created: "2026-11-24T21:45:44.440170728Z"
+    created: "2026-11-25T04:23:17.60295689Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -906,7 +948,7 @@ entries:
     version: 1.2.19
   - apiVersion: v2
     appVersion: b10795
-    created: "2026-11-24T21:45:44.419271155Z"
+    created: "2026-11-25T04:23:17.59036044Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -920,7 +962,7 @@ entries:
     version: 1.2.17
   - apiVersion: v2
     appVersion: b10775
-    created: "2026-11-24T21:45:44.396082159Z"
+    created: "2026-11-25T04:23:17.578232259Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -934,7 +976,7 @@ entries:
     version: 1.2.16
   - apiVersion: v2
     appVersion: b10752
-    created: "2026-11-24T21:45:44.371711131Z"
+    created: "2026-11-25T04:23:17.565901831Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -948,7 +990,7 @@ entries:
     version: 1.2.15
   - apiVersion: v2
     appVersion: b10731
-    created: "2026-11-24T21:45:44.349741415Z"
+    created: "2026-11-25T04:23:17.545664292Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -962,7 +1004,7 @@ entries:
     version: 1.2.14
   - apiVersion: v2
     appVersion: b10711
-    created: "2026-11-24T21:45:44.324527213Z"
+    created: "2026-11-25T04:23:17.521014716Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -976,7 +1018,7 @@ entries:
     version: 1.2.13
   - apiVersion: v2
     appVersion: b10689
-    created: "2026-11-24T21:45:44.299425706Z"
+    created: "2026-11-25T04:23:17.498009082Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -990,7 +1032,7 @@ entries:
     version: 1.2.12
   - apiVersion: v2
     appVersion: b10680
-    created: "2026-11-24T21:45:44.277233926Z"
+    created: "2026-11-25T04:23:17.473672382Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1004,7 +1046,7 @@ entries:
     version: 1.2.11
   - apiVersion: v2
     appVersion: b10666
-    created: "2026-11-24T21:45:44.252583468Z"
+    created: "2026-11-25T04:23:17.450140954Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1018,7 +1060,7 @@ entries:
     version: 1.2.10
   - apiVersion: v2
     appVersion: b10644
-    created: "2026-11-24T21:45:45.803329136Z"
+    created: "2026-11-25T04:23:18.991418501Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1032,7 +1074,7 @@ entries:
     version: 1.2.9
   - apiVersion: v2
     appVersion: b10630
-    created: "2026-11-24T21:45:45.744277309Z"
+    created: "2026-11-25T04:23:18.875096649Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1046,7 +1088,7 @@ entries:
     version: 1.2.8
   - apiVersion: v2
     appVersion: b10615
-    created: "2026-11-24T21:45:45.474322697Z"
+    created: "2026-11-25T04:23:18.617632144Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1060,7 +1102,7 @@ entries:
     version: 1.2.7
   - apiVersion: v2
     appVersion: b10603
-    created: "2026-11-24T21:45:45.354142358Z"
+    created: "2026-11-25T04:23:18.499057347Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1074,7 +1116,7 @@ entries:
     version: 1.2.6
   - apiVersion: v2
     appVersion: b10588
-    created: "2026-11-24T21:45:45.226085119Z"
+    created: "2026-11-25T04:23:18.378351964Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1088,7 +1130,7 @@ entries:
     version: 1.2.5
   - apiVersion: v2
     appVersion: b10573
-    created: "2026-11-24T21:45:44.967237078Z"
+    created: "2026-11-25T04:23:18.118778908Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1102,7 +1144,7 @@ entries:
     version: 1.2.4
   - apiVersion: v2
     appVersion: b10548
-    created: "2026-11-24T21:45:44.706373208Z"
+    created: "2026-11-25T04:23:17.856195495Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1116,7 +1158,7 @@ entries:
     version: 1.2.3
   - apiVersion: v2
     appVersion: b10524
-    created: "2026-11-24T21:45:44.464400899Z"
+    created: "2026-11-25T04:23:17.618605738Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1130,7 +1172,7 @@ entries:
     version: 1.2.2
   - apiVersion: v2
     appVersion: b10438
-    created: "2026-11-24T21:45:44.226663376Z"
+    created: "2026-11-25T04:23:17.428855962Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1144,7 +1186,7 @@ entries:
     version: 1.2.1
   - apiVersion: v2
     appVersion: b10380
-    created: "2026-11-24T21:45:44.203010386Z"
+    created: "2026-11-25T04:23:17.403829642Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1158,7 +1200,7 @@ entries:
     version: 1.2.0
   - apiVersion: v2
     appVersion: b10380
-    created: "2026-11-24T21:45:44.013383835Z"
+    created: "2026-11-25T04:23:17.220166011Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1172,7 +1214,7 @@ entries:
     version: 1.1.11
   - apiVersion: v2
     appVersion: b10335
-    created: "2026-11-24T21:45:43.991545196Z"
+    created: "2026-11-25T04:23:17.196222408Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1186,7 +1228,7 @@ entries:
     version: 1.1.10
   - apiVersion: v2
     appVersion: b10331
-    created: "2026-11-24T21:45:44.180472405Z"
+    created: "2026-11-25T04:23:17.378651035Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1200,7 +1242,7 @@ entries:
     version: 1.1.9
   - apiVersion: v2
     appVersion: b10223
-    created: "2026-11-24T21:45:44.155730094Z"
+    created: "2026-11-25T04:23:17.357760307Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1214,7 +1256,7 @@ entries:
     version: 1.1.8
   - apiVersion: v2
     appVersion: b10200
-    created: "2026-11-24T21:45:44.130469826Z"
+    created: "2026-11-25T04:23:17.334584062Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1228,7 +1270,7 @@ entries:
     version: 1.1.7
   - apiVersion: v2
     appVersion: b9976
-    created: "2026-11-24T21:45:44.108586296Z"
+    created: "2026-11-25T04:23:17.311185165Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1242,7 +1284,7 @@ entries:
     version: 1.1.5
   - apiVersion: v2
     appVersion: b9967
-    created: "2026-11-24T21:45:44.085063981Z"
+    created: "2026-11-25T04:23:17.28982929Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1256,7 +1298,7 @@ entries:
     version: 1.1.4
   - apiVersion: v2
     appVersion: b9894
-    created: "2026-11-24T21:45:44.061011876Z"
+    created: "2026-11-25T04:23:17.265647336Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1270,7 +1312,7 @@ entries:
     version: 1.1.3
   - apiVersion: v2
     appVersion: b9870
-    created: "2026-11-24T21:45:44.038465405Z"
+    created: "2026-11-25T04:23:17.241550245Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1284,7 +1326,7 @@ entries:
     version: 1.1.2
   - apiVersion: v2
     appVersion: b9776
-    created: "2026-11-24T21:45:43.96277271Z"
+    created: "2026-11-25T04:23:17.172931787Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1298,7 +1340,7 @@ entries:
     version: 1.1.1
   - apiVersion: v2
     appVersion: b9744
-    created: "2026-11-24T21:45:43.937304499Z"
+    created: "2026-11-25T04:23:17.149251512Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1312,7 +1354,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: b9744
-    created: "2026-11-24T21:45:43.71890506Z"
+    created: "2026-11-25T04:23:16.950336013Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1326,7 +1368,7 @@ entries:
     version: 1.0.15
   - apiVersion: v2
     appVersion: b9570
-    created: "2026-11-24T21:45:43.695220914Z"
+    created: "2026-11-25T04:23:16.927455207Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1340,7 +1382,7 @@ entries:
     version: 1.0.14
   - apiVersion: v2
     appVersion: b9538
-    created: "2026-11-24T21:45:43.670800146Z"
+    created: "2026-11-25T04:23:16.904207755Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1354,7 +1396,7 @@ entries:
     version: 1.0.12
   - apiVersion: v2
     appVersion: b9294
-    created: "2026-11-24T21:45:43.647821671Z"
+    created: "2026-11-25T04:23:16.882224646Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1368,7 +1410,7 @@ entries:
     version: 1.0.11
   - apiVersion: v2
     appVersion: b9246
-    created: "2026-11-24T21:45:43.623406949Z"
+    created: "2026-11-25T04:23:16.858264354Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1382,7 +1424,7 @@ entries:
     version: 1.0.10
   - apiVersion: v2
     appVersion: b9191
-    created: "2026-11-24T21:45:43.914381818Z"
+    created: "2026-11-25T04:23:17.127890125Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1396,7 +1438,7 @@ entries:
     version: 1.0.9
   - apiVersion: v2
     appVersion: b9093
-    created: "2026-11-24T21:45:43.889298532Z"
+    created: "2026-11-25T04:23:17.105799397Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1410,7 +1452,7 @@ entries:
     version: 1.0.8
   - apiVersion: v2
     appVersion: b9010
-    created: "2026-11-24T21:45:43.866379162Z"
+    created: "2026-11-25T04:23:17.082750446Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1424,7 +1466,7 @@ entries:
     version: 1.0.7
   - apiVersion: v2
     appVersion: b8935
-    created: "2026-11-24T21:45:43.84394108Z"
+    created: "2026-11-25T04:23:17.061955507Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1438,7 +1480,7 @@ entries:
     version: 1.0.6
   - apiVersion: v2
     appVersion: b8851
-    created: "2026-11-24T21:45:43.819813758Z"
+    created: "2026-11-25T04:23:17.039206601Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1452,7 +1494,7 @@ entries:
     version: 1.0.5
   - apiVersion: v2
     appVersion: b8808
-    created: "2026-11-24T21:45:43.794411645Z"
+    created: "2026-11-25T04:23:17.014966333Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1466,7 +1508,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-11-24T21:45:43.768868334Z"
+    created: "2026-11-25T04:23:16.99418608Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1480,7 +1522,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-11-24T21:45:43.743068267Z"
+    created: "2026-11-25T04:23:16.971049344Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1494,7 +1536,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-11-24T21:45:43.600971993Z"
+    created: "2026-11-25T04:23:16.833745606Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1508,7 +1550,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: b8757
-    created: "2026-11-24T21:45:43.579696811Z"
+    created: "2026-11-25T04:23:16.812086702Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1523,7 +1565,7 @@ entries:
   mcp-context-forge:
   - apiVersion: v2
     appVersion: v1.0.0-RC-3
-    created: "2026-11-24T21:45:45.889420403Z"
+    created: "2026-11-25T04:23:19.071783123Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1545,7 +1587,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.0.0-RC-3
-    created: "2026-11-24T21:45:45.868843158Z"
+    created: "2026-11-25T04:23:19.052367368Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1567,7 +1609,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.0.0-RC-3
-    created: "2026-11-24T21:45:45.847116416Z"
+    created: "2026-11-25T04:23:19.037565769Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1589,7 +1631,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.0.0-RC-3
-    created: "2026-11-24T21:45:45.826811144Z"
+    created: "2026-11-25T04:23:19.015518939Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1612,7 +1654,21 @@ entries:
   opencode:
   - apiVersion: v2
     appVersion: 2.3.2
-    created: "2026-11-24T21:45:46.799357044Z"
+    created: "2026-11-25T04:23:20.117459792Z"
+    dependencies:
+    - name: common
+      repository: oci://oci.trueforge.org/truecharts
+      version: 32.x.x
+    description: A web-based instance of OpenCode AI coding agent with Podman support
+    digest: b8d05fa3e49d0678db7a9ae6a3aa20474eeae92f7e4a9142ff688def4fbee247
+    name: opencode
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/opencode-2.2.9.tgz
+    version: 2.2.9
+  - apiVersion: v2
+    appVersion: 2.3.2
+    created: "2026-11-25T04:23:20.068695928Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1626,7 +1682,7 @@ entries:
     version: 2.2.8
   - apiVersion: v2
     appVersion: 2.3.0
-    created: "2026-11-24T21:45:46.778994676Z"
+    created: "2026-11-25T04:23:20.040488677Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1640,7 +1696,7 @@ entries:
     version: 2.2.7
   - apiVersion: v2
     appVersion: 2.2.7
-    created: "2026-11-24T21:45:46.760547174Z"
+    created: "2026-11-25T04:23:20.014154811Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1654,7 +1710,7 @@ entries:
     version: 2.2.6
   - apiVersion: v2
     appVersion: 2.2.7
-    created: "2026-11-24T21:45:46.735006679Z"
+    created: "2026-11-25T04:23:19.990814232Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1668,7 +1724,7 @@ entries:
     version: 2.2.5
   - apiVersion: v2
     appVersion: 2.2.7
-    created: "2026-11-24T21:45:46.717084989Z"
+    created: "2026-11-25T04:23:19.960924993Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1682,7 +1738,7 @@ entries:
     version: 2.2.4
   - apiVersion: v2
     appVersion: 2.2.7
-    created: "2026-11-24T21:45:46.63840168Z"
+    created: "2026-11-25T04:23:19.93519025Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1696,7 +1752,7 @@ entries:
     version: 2.2.3
   - apiVersion: v2
     appVersion: 2.2.7
-    created: "2026-11-24T21:45:46.614413383Z"
+    created: "2026-11-25T04:23:19.908753399Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1710,7 +1766,7 @@ entries:
     version: 2.2.2
   - apiVersion: v2
     appVersion: 2.2.7
-    created: "2026-11-24T21:45:46.592249965Z"
+    created: "2026-11-25T04:23:19.883026244Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1724,7 +1780,7 @@ entries:
     version: 2.2.1
   - apiVersion: v2
     appVersion: 2.2.6
-    created: "2026-11-24T21:45:46.564513572Z"
+    created: "2026-11-25T04:23:19.859029423Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1738,7 +1794,7 @@ entries:
     version: 2.2.0
   - apiVersion: v2
     appVersion: 2.2.6
-    created: "2026-11-24T21:45:46.542061304Z"
+    created: "2026-11-25T04:23:19.831343851Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1753,7 +1809,7 @@ entries:
     version: 2.0.0
   - apiVersion: v2
     appVersion: 2.2.6
-    created: "2026-11-24T21:45:46.525477254Z"
+    created: "2026-11-25T04:23:19.802094573Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1768,7 +1824,7 @@ entries:
     version: 1.1.9
   - apiVersion: v2
     appVersion: 1.19.3
-    created: "2026-11-24T21:45:46.512245255Z"
+    created: "2026-11-25T04:23:19.777180269Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1783,7 +1839,7 @@ entries:
     version: 1.1.8
   - apiVersion: v2
     appVersion: 1.18.31
-    created: "2026-11-24T21:45:46.499343085Z"
+    created: "2026-11-25T04:23:19.747687098Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1798,7 +1854,7 @@ entries:
     version: 1.1.4
   - apiVersion: v2
     appVersion: 1.18.31
-    created: "2026-11-24T21:45:46.473502165Z"
+    created: "2026-11-25T04:23:19.719098967Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1813,7 +1869,7 @@ entries:
     version: 1.1.3
   - apiVersion: v2
     appVersion: 1.18.31
-    created: "2026-11-24T21:45:46.448455905Z"
+    created: "2026-11-25T04:23:19.694489801Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1828,7 +1884,7 @@ entries:
     version: 1.1.2
   - apiVersion: v2
     appVersion: 1.18.30
-    created: "2026-11-24T21:45:46.425801819Z"
+    created: "2026-11-25T04:23:19.669212549Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1843,7 +1899,7 @@ entries:
     version: 1.1.1
   - apiVersion: v2
     appVersion: 1.18.30
-    created: "2026-11-24T21:45:46.40005072Z"
+    created: "2026-11-25T04:23:19.646726652Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1858,7 +1914,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: 2.0.0
-    created: "2026-11-24T21:45:46.209915035Z"
+    created: "2026-11-25T04:23:19.471289335Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1873,7 +1929,7 @@ entries:
     version: 1.0.23
   - apiVersion: v2
     appVersion: 1.18.30
-    created: "2026-11-24T21:45:46.185258039Z"
+    created: "2026-11-25T04:23:19.448072923Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1888,7 +1944,7 @@ entries:
     version: 1.0.22
   - apiVersion: v2
     appVersion: 1.18.29
-    created: "2026-11-24T21:45:46.163011649Z"
+    created: "2026-11-25T04:23:19.421739495Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1903,7 +1959,7 @@ entries:
     version: 1.0.21
   - apiVersion: v2
     appVersion: 1.18.28
-    created: "2026-11-24T21:45:46.137400995Z"
+    created: "2026-11-25T04:23:19.391201814Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1918,7 +1974,7 @@ entries:
     version: 1.0.20
   - apiVersion: v2
     appVersion: 1.18.27
-    created: "2026-11-24T21:45:46.093012495Z"
+    created: "2026-11-25T04:23:19.343245408Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1933,7 +1989,7 @@ entries:
     version: 1.0.19
   - apiVersion: v2
     appVersion: 1.18.26
-    created: "2026-11-24T21:45:46.07111525Z"
+    created: "2026-11-25T04:23:19.322817158Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1948,7 +2004,7 @@ entries:
     version: 1.0.18
   - apiVersion: v2
     appVersion: 1.18.25
-    created: "2026-11-24T21:45:46.046256714Z"
+    created: "2026-11-25T04:23:19.306189426Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1963,7 +2019,7 @@ entries:
     version: 1.0.17
   - apiVersion: v2
     appVersion: 1.18.24
-    created: "2026-11-24T21:45:46.02439514Z"
+    created: "2026-11-25T04:23:19.282443212Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1978,7 +2034,7 @@ entries:
     version: 1.0.16
   - apiVersion: v2
     appVersion: 1.18.23
-    created: "2026-11-24T21:45:46.010633581Z"
+    created: "2026-11-25T04:23:19.260688432Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -1993,7 +2049,7 @@ entries:
     version: 1.0.15
   - apiVersion: v2
     appVersion: 1.18.21
-    created: "2026-11-24T21:45:45.996968377Z"
+    created: "2026-11-25T04:23:19.23736187Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2008,7 +2064,7 @@ entries:
     version: 1.0.14
   - apiVersion: v2
     appVersion: 1.18.20
-    created: "2026-11-24T21:45:45.98290379Z"
+    created: "2026-11-25T04:23:19.21597077Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2023,7 +2079,7 @@ entries:
     version: 1.0.13
   - apiVersion: v2
     appVersion: 1.18.19
-    created: "2026-11-24T21:45:45.972017057Z"
+    created: "2026-11-25T04:23:19.190547798Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2038,7 +2094,7 @@ entries:
     version: 1.0.12
   - apiVersion: v2
     appVersion: 1.18.18
-    created: "2026-11-24T21:45:45.95205369Z"
+    created: "2026-11-25T04:23:19.166860947Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2053,7 +2109,7 @@ entries:
     version: 1.0.11
   - apiVersion: v2
     appVersion: 1.18.15
-    created: "2026-11-24T21:45:45.929159522Z"
+    created: "2026-11-25T04:23:19.144804175Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2068,7 +2124,7 @@ entries:
     version: 1.0.10
   - apiVersion: v2
     appVersion: 1.18.11
-    created: "2026-11-24T21:45:46.374971359Z"
+    created: "2026-11-25T04:23:19.621322209Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2083,7 +2139,7 @@ entries:
     version: 1.0.9
   - apiVersion: v2
     appVersion: 1.18.10
-    created: "2026-11-24T21:45:46.353048169Z"
+    created: "2026-11-25T04:23:19.601646697Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2098,7 +2154,7 @@ entries:
     version: 1.0.8
   - apiVersion: v2
     appVersion: 1.18.5
-    created: "2026-11-24T21:45:46.328801966Z"
+    created: "2026-11-25T04:23:19.589639397Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2113,7 +2169,7 @@ entries:
     version: 1.0.7
   - apiVersion: v2
     appVersion: 1.18.3
-    created: "2026-11-24T21:45:46.302183808Z"
+    created: "2026-11-25T04:23:19.564763243Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2128,7 +2184,7 @@ entries:
     version: 1.0.6
   - apiVersion: v2
     appVersion: 1.17.18
-    created: "2026-11-24T21:45:46.280494997Z"
+    created: "2026-11-25T04:23:19.541131687Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2143,7 +2199,7 @@ entries:
     version: 1.0.5
   - apiVersion: v2
     appVersion: 1.17.14
-    created: "2026-11-24T21:45:46.255756581Z"
+    created: "2026-11-25T04:23:19.525467341Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2158,7 +2214,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: 1.17.14
-    created: "2026-11-24T21:45:46.231489363Z"
+    created: "2026-11-25T04:23:19.496248598Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2173,7 +2229,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: 1.17.13
-    created: "2026-11-24T21:45:46.114332846Z"
+    created: "2026-11-25T04:23:19.364734173Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2188,7 +2244,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 1.17.11
-    created: "2026-11-24T21:45:45.914784835Z"
+    created: "2026-11-25T04:23:19.118442964Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2203,7 +2259,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 1.17.9
-    created: "2026-11-24T21:45:45.90204728Z"
+    created: "2026-11-25T04:23:19.096383295Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2219,7 +2275,7 @@ entries:
   opencode-web:
   - apiVersion: v2
     appVersion: v1.17.8
-    created: "2026-11-24T21:45:46.815103347Z"
+    created: "2026-11-25T04:23:20.14402251Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2241,10 +2297,10 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v2
     appVersion: v0.1.11
-    created: "2026-11-24T21:45:46.82157746Z"
+    created: "2026-11-25T04:23:20.154000408Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
-    digest: 346733093ea6fa561ba3eab30828ce36fc650127ac65a199e0168572c6b04fca
+    digest: a44dd2f855a8cd720a4fa49133c45c46344c69fa19ed24e125a3ce18ac1a88fb
     kubeVersion: '>=1.26.0-0'
     name: rancher-pushprox
     type: application
@@ -2259,7 +2315,7 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v2
     appVersion: v0.1.11
-    created: "2026-11-24T21:45:46.820349193Z"
+    created: "2026-11-25T04:23:20.151419988Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
     digest: 836f30801425df7639eb2962632dcba3d6511374be708d1be7c63fc1322a7632
@@ -2277,7 +2333,7 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v2
     appVersion: v0.1.10
-    created: "2026-11-24T21:45:46.819145032Z"
+    created: "2026-11-25T04:23:20.149035549Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
     digest: 3f8f0a63477bfca5258f98801ab435e25157e7d6197dd8fab39b41d2def915fe
@@ -2295,7 +2351,7 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v2
     appVersion: v0.1.9
-    created: "2026-11-24T21:45:46.8227301Z"
+    created: "2026-11-25T04:23:20.156335373Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
     digest: 472794f7149a58d8f8afe9fadcc518783b8b203deb4d3f5e11618b5f058592ee
@@ -2313,7 +2369,7 @@ entries:
       catalog.rancher.io/release-name: rancher-pushprox
     apiVersion: v1
     appVersion: v0.1.5-rancher2
-    created: "2026-11-24T21:45:46.817208827Z"
+    created: "2026-11-25T04:23:20.146513333Z"
     description: Sets up a deployment of the PushProx proxy and a DaemonSet of PushProx
       clients.
     digest: 3e6ec96cb53973d854c3b3218fd75b55a84d4ee51185f673ddd9a8c368902ddd
@@ -2326,7 +2382,21 @@ entries:
   stalwart:
   - apiVersion: v2
     appVersion: 1.2.0
-    created: "2026-11-24T21:45:47.576510527Z"
+    created: "2026-11-25T04:23:21.00321943Z"
+    dependencies:
+    - name: common
+      repository: oci://oci.trueforge.org/truecharts
+      version: 32.x.x
+    description: A secure, scalable, and comprehensive open-source mail server
+    digest: 84e0e73ae8efdbfbbf785d240a88f3c4804f8642a7fc51156ef508ee1304be5e
+    name: stalwart
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/stalwart-1.1.1.tgz
+    version: 1.1.1
+  - apiVersion: v2
+    appVersion: 1.2.0
+    created: "2026-11-25T04:23:20.956528947Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2340,7 +2410,7 @@ entries:
     version: 1.1.0
   - apiVersion: v2
     appVersion: 1.1.1
-    created: "2026-11-24T21:45:47.562307623Z"
+    created: "2026-11-25T04:23:20.929494839Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2354,7 +2424,7 @@ entries:
     version: 1.0.0
   - apiVersion: v2
     appVersion: 1.1.1
-    created: "2026-11-24T21:45:47.372752683Z"
+    created: "2026-11-25T04:23:20.74622051Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2368,7 +2438,7 @@ entries:
     version: 0.2.11
   - apiVersion: v2
     appVersion: 1.1.0
-    created: "2026-11-24T21:45:47.337036435Z"
+    created: "2026-11-25T04:23:20.723366914Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2382,7 +2452,7 @@ entries:
     version: 0.2.10
   - apiVersion: v2
     appVersion: 1.0.3
-    created: "2026-11-24T21:45:47.537854549Z"
+    created: "2026-11-25T04:23:20.903254755Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2396,7 +2466,7 @@ entries:
     version: 0.2.9
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2026-11-24T21:45:47.509330014Z"
+    created: "2026-11-25T04:23:20.874573931Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2410,7 +2480,7 @@ entries:
     version: 0.2.8
   - apiVersion: v2
     appVersion: 0.16.26
-    created: "2026-11-24T21:45:47.484016177Z"
+    created: "2026-11-25T04:23:20.845481048Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2424,7 +2494,7 @@ entries:
     version: 0.2.5
   - apiVersion: v2
     appVersion: 0.16.25
-    created: "2026-11-24T21:45:47.456776534Z"
+    created: "2026-11-25T04:23:20.820578641Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2438,7 +2508,7 @@ entries:
     version: 0.2.4
   - apiVersion: v2
     appVersion: 0.16.24
-    created: "2026-11-24T21:45:47.429931644Z"
+    created: "2026-11-25T04:23:20.795445123Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2452,7 +2522,7 @@ entries:
     version: 0.2.3
   - apiVersion: v2
     appVersion: 0.16.24
-    created: "2026-11-24T21:45:47.400455357Z"
+    created: "2026-11-25T04:23:20.770834815Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2466,7 +2536,7 @@ entries:
     version: 0.2.2
   - apiVersion: v2
     appVersion: 0.16.23
-    created: "2026-11-24T21:45:47.313425808Z"
+    created: "2026-11-25T04:23:20.709141154Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2480,7 +2550,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 0.16.22
-    created: "2026-11-24T21:45:47.284691073Z"
+    created: "2026-11-25T04:23:20.69063412Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2494,7 +2564,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 0.16.22
-    created: "2026-11-24T21:45:47.050112635Z"
+    created: "2026-11-25T04:23:20.413977143Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2508,7 +2578,7 @@ entries:
     version: 0.1.17
   - apiVersion: v2
     appVersion: 0.16.21
-    created: "2026-11-24T21:45:47.022357695Z"
+    created: "2026-11-25T04:23:20.387768709Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2522,7 +2592,7 @@ entries:
     version: 0.1.16
   - apiVersion: v2
     appVersion: 0.16.20
-    created: "2026-11-24T21:45:46.994793221Z"
+    created: "2026-11-25T04:23:20.361093227Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2536,7 +2606,7 @@ entries:
     version: 0.1.15
   - apiVersion: v2
     appVersion: 0.16.19
-    created: "2026-11-24T21:45:46.969177562Z"
+    created: "2026-11-25T04:23:20.337554888Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2550,7 +2620,7 @@ entries:
     version: 0.1.14
   - apiVersion: v2
     appVersion: 0.16.18
-    created: "2026-11-24T21:45:46.945543741Z"
+    created: "2026-11-25T04:23:20.312192585Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2564,7 +2634,7 @@ entries:
     version: 0.1.13
   - apiVersion: v2
     appVersion: 0.16.17
-    created: "2026-11-24T21:45:46.92226877Z"
+    created: "2026-11-25T04:23:20.287059627Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2578,7 +2648,7 @@ entries:
     version: 0.1.12
   - apiVersion: v2
     appVersion: 0.16.16
-    created: "2026-11-24T21:45:46.901741674Z"
+    created: "2026-11-25T04:23:20.262698171Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2592,7 +2662,7 @@ entries:
     version: 0.1.11
   - apiVersion: v2
     appVersion: 0.16.16
-    created: "2026-11-24T21:45:46.877254858Z"
+    created: "2026-11-25T04:23:20.235646139Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2606,7 +2676,7 @@ entries:
     version: 0.1.10
   - apiVersion: v2
     appVersion: 0.16.15
-    created: "2026-11-24T21:45:47.257922318Z"
+    created: "2026-11-25T04:23:20.662203937Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2620,7 +2690,7 @@ entries:
     version: 0.1.9
   - apiVersion: v2
     appVersion: 0.16.15
-    created: "2026-11-24T21:45:47.234785553Z"
+    created: "2026-11-25T04:23:20.627109113Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2634,7 +2704,7 @@ entries:
     version: 0.1.8
   - apiVersion: v2
     appVersion: 0.16.13
-    created: "2026-11-24T21:45:47.208559894Z"
+    created: "2026-11-25T04:23:20.602549158Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2648,7 +2718,7 @@ entries:
     version: 0.1.7
   - apiVersion: v2
     appVersion: 0.16.13
-    created: "2026-11-24T21:45:47.181523164Z"
+    created: "2026-11-25T04:23:20.556555777Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2662,7 +2732,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: 0.16.12
-    created: "2026-11-24T21:45:47.153838365Z"
+    created: "2026-11-25T04:23:20.521885027Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2676,7 +2746,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 0.16.11
-    created: "2026-11-24T21:45:47.129572092Z"
+    created: "2026-11-25T04:23:20.495040441Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2690,7 +2760,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 0.16.8
-    created: "2026-11-24T21:45:47.102363842Z"
+    created: "2026-11-25T04:23:20.464581358Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2704,7 +2774,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 0.16.7
-    created: "2026-11-24T21:45:47.075050202Z"
+    created: "2026-11-25T04:23:20.437272376Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2718,7 +2788,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 0.16.6
-    created: "2026-11-24T21:45:46.858818618Z"
+    created: "2026-11-25T04:23:20.210325416Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2732,7 +2802,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.16.5
-    created: "2026-11-24T21:45:46.839946126Z"
+    created: "2026-11-25T04:23:20.183943081Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2747,7 +2817,22 @@ entries:
   wakapi:
   - apiVersion: v2
     appVersion: 2.18.2
-    created: "2026-11-24T21:45:47.711410601Z"
+    created: "2026-11-25T04:23:21.261959206Z"
+    dependencies:
+    - name: common
+      repository: oci://oci.trueforge.org/truecharts
+      version: 32.x.x
+    description: A minimalist, self-hosted WakaTime-compatible backend for coding
+      statistics
+    digest: fb8681f1000a6c53a9fc21334995a694cb24f087612b03d9fba28c66f54b5c51
+    name: wakapi
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/wakapi-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 2.18.2
+    created: "2026-11-25T04:23:21.217717217Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2762,7 +2847,7 @@ entries:
     version: 0.1.8
   - apiVersion: v2
     appVersion: 2.18.1
-    created: "2026-11-24T21:45:47.688182881Z"
+    created: "2026-11-25T04:23:21.195597147Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2777,7 +2862,7 @@ entries:
     version: 0.1.7
   - apiVersion: v2
     appVersion: 2.18.0
-    created: "2026-11-24T21:45:47.672361102Z"
+    created: "2026-11-25T04:23:21.173635106Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2792,7 +2877,7 @@ entries:
     version: 0.1.6
   - apiVersion: v2
     appVersion: 2.17.6
-    created: "2026-11-24T21:45:47.660226903Z"
+    created: "2026-11-25T04:23:21.148396495Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2807,7 +2892,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 2.17.5
-    created: "2026-11-24T21:45:47.649468322Z"
+    created: "2026-11-25T04:23:21.124884081Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2822,7 +2907,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 2.17.4
-    created: "2026-11-24T21:45:47.635939403Z"
+    created: "2026-11-25T04:23:21.10326826Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2837,7 +2922,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 2.17.3
-    created: "2026-11-24T21:45:47.617129819Z"
+    created: "2026-11-25T04:23:21.073963584Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2852,7 +2937,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 2.16.1
-    created: "2026-11-24T21:45:47.605945026Z"
+    created: "2026-11-25T04:23:21.049333684Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2867,7 +2952,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 2.16.1
-    created: "2026-11-24T21:45:47.592310732Z"
+    created: "2026-11-25T04:23:21.028361909Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2883,7 +2968,21 @@ entries:
   zfs-exporter:
   - apiVersion: v2
     appVersion: 2.5.2
-    created: "2026-11-24T21:45:47.830651932Z"
+    created: "2026-11-25T04:23:21.43473363Z"
+    dependencies:
+    - name: common
+      repository: oci://oci.trueforge.org/truecharts
+      version: 32.x.x
+    description: A Helm chart for zfs_exporter based on trueforge common library
+    digest: c7706e50d117e87d564ef328624da8d5f22ebfc001f69f3a4945b7d282a1173c
+    name: zfs-exporter
+    type: application
+    urls:
+    - https://arch-anes.github.io/charts/zfs-exporter-1.0.5.tgz
+    version: 1.0.5
+  - apiVersion: v2
+    appVersion: 2.5.2
+    created: "2026-11-25T04:23:21.385038317Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2897,7 +2996,7 @@ entries:
     version: 1.0.4
   - apiVersion: v2
     appVersion: 2.5.1
-    created: "2026-11-24T21:45:47.807478678Z"
+    created: "2026-11-25T04:23:21.36101633Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2911,7 +3010,7 @@ entries:
     version: 1.0.3
   - apiVersion: v2
     appVersion: 2.5.0
-    created: "2026-11-24T21:45:47.782821633Z"
+    created: "2026-11-25T04:23:21.3356232Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2925,7 +3024,7 @@ entries:
     version: 1.0.2
   - apiVersion: v2
     appVersion: 2.4.1
-    created: "2026-11-24T21:45:47.757616205Z"
+    created: "2026-11-25T04:23:21.310308442Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2939,7 +3038,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 2.3.12
-    created: "2026-11-24T21:45:47.736239412Z"
+    created: "2026-11-25T04:23:21.2867911Z"
     dependencies:
     - name: common
       repository: oci://oci.trueforge.org/truecharts
@@ -2951,4 +3050,4 @@ entries:
     urls:
     - https://arch-anes.github.io/charts/zfs-exporter-1.0.0.tgz
     version: 1.0.0
-generated: "2026-11-24T21:45:43.284695823Z"
+generated: "2026-11-25T04:23:16.448903674Z"
