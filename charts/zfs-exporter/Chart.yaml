@@ -2,11 +2,11 @@ apiVersion: v2
 name: zfs-exporter
 description: A Helm chart for zfs_exporter based on trueforge common library
 type: application
-version: 1.0.6
+version: 1.0.7
 appVersion: 2.5.2 # renovate: image=ghcr.io/arch-anes/zfs-exporter
 dependencies:
   - name: common
-    version: 32.x.x
+    version: 32.9.0
     repository: oci://oci.trueforge.org/truecharts
     condition: ""
     alias: ""

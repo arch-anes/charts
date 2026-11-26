@@ -29,6 +29,20 @@
         "repository:\\s*(?<depName>\\S+)\\s+tag:\\s*[\"']?(?<currentValue>[^\"'\\s]+)[\"']?"
       ],
       "datasourceTemplate": "docker"
+    },
+    {
+      "customType": "regex",
+      "description": "Keep the common schema reference in values.schema.json in sync with the common chart dependency.",
+      "fileMatch": [
+        "(^|/)charts/[^/]+/values\\.schema\\.json$"
+      ],
+      "matchStrings": [
+        "schemas/common/(?<currentValue>\\d+\\.\\d+\\.\\d+)\\.schema\\.json"
+      ],
+      "depNameTemplate": "common",
+      "packageNameTemplate": "oci.trueforge.org/truecharts/common",
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "semver"
     }
   ],
   "packageRules": [
@@ -68,6 +82,19 @@
           "bumpType": "{{#if (includes (lookupArray upgrades \"depName\") \"ghcr.io/ggml-org/llama.cpp\")}}patch{{else if (includes (lookupArray upgrades \"updateType\") \"major\")}}major{{else if (includes (lookupArray upgrades \"updateType\") \"minor\")}}minor{{else}}patch{{/if}}"
         }
       ]
+    },
+    {
+      "description": "The common schema reference is a URL, so never append a digest to it.",
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchDepNames": [
+        "common"
+      ],
+      "matchFileNames": [
+        "charts/**/values.schema.json"
+      ],
+      "pinDigests": false
     }
   ]
 }

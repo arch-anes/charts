@@ -2,11 +2,11 @@ apiVersion: v2
 name: opencode
 description: A web-based instance of OpenCode AI coding agent with Podman support
 type: application
-version: 2.2.10
+version: 2.2.11
 appVersion: 2.3.2 # renovate: image=ghcr.io/arch-anes/opencode
 dependencies:
   - name: common
-    version: 32.x.x
+    version: 32.9.0
     repository: oci://oci.trueforge.org/truecharts
     condition: ""
     alias: ""
