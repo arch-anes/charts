@@ -2,8 +2,8 @@ apiVersion: v2
 name: llama-cpp
 description: A Helm chart for llama.cpp server based on trueforge common library
 type: application
-version: 1.2.86
-appVersion: b12767 # renovate: image=ghcr.io/ggml-org/llama.cpp
+version: 1.2.87
+appVersion: b12808 # renovate: image=ghcr.io/ggml-org/llama.cpp
 dependencies:
   - name: common
     version: 32.9.0
