@@ -11,8 +11,8 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "(^|/)Chart\\.yaml$"
+      "managerFilePatterns": [
+        "/(^|/)Chart\\.yaml$/"
       ],
       "matchStrings": [
         "appVersion:\\s*\"?(?<currentValue>[^\"\\s]+)\"?\\s*#\\s*renovate:\\s*image=(?<depName>[^\\s]+)"
@@ -22,8 +22,8 @@
     {
       "customType": "regex",
       "description": "Bump truecharts image selectors.",
-      "fileMatch": [
-        "(^|/)values\\.yaml$"
+      "managerFilePatterns": [
+        "/(^|/)values\\.yaml$/"
       ],
       "matchStrings": [
         "repository:\\s*(?<depName>\\S+)\\s+tag:\\s*[\"']?(?<currentValue>[^\"'\\s]+)[\"']?"
@@ -33,8 +33,8 @@
     {
       "customType": "regex",
       "description": "Keep the common schema reference in values.schema.json in sync with the common chart dependency.",
-      "fileMatch": [
-        "(^|/)charts/[^/]+/values\\.schema\\.json$"
+      "managerFilePatterns": [
+        "/(^|/)charts/[^/]+/values\\.schema\\.json$/"
       ],
       "matchStrings": [
         "schemas/common/(?<currentValue>\\d+\\.\\d+\\.\\d+)\\.schema\\.json"
