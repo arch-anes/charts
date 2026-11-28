@@ -18,7 +18,7 @@ steps:
       output_file: .github_token
 
   - name: Configure git
-    image: ghcr.io/arch-anes/dev-container-kubernetes:latest@sha256:603dfa92d0e27fd79acbe2cc1526b7301b660d32cc876f29a1468bfc6e3261c0
+    image: ghcr.io/arch-anes/dev-container-kubernetes:latest
     commands:
       - sudo chown -R "$(id -u):$(id -g)" .
       - |
